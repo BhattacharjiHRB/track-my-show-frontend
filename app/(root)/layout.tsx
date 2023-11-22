@@ -27,11 +27,11 @@ export default function RootLayout({
           defaultTheme='system'
           enableSystem={true}
         >
+          <Toaster position='top-center' />
           
           <Navbar />
           {children}
           <Footer />
-          <Toaster position='top-center' />
         </ThemeProvider>
         </body>
     </html>

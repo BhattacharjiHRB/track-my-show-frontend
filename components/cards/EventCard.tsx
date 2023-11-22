@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card'
 import Image from 'next/image'
@@ -5,8 +6,15 @@ import { Users2 } from 'lucide-react'
 import { Button } from '../ui/button'
 import { Badge } from '../ui/badge'
 import { Separator } from '../ui/separator'
+import toast from 'react-hot-toast'
 
 const EventCard = () => {
+
+    const eventHandler = () => {
+      
+    
+    }
+
   return (
     <Card className='w-[330px] h-[450px] flex flex-col bg-[#1E1D1D] border-none'>
         <CardHeader>
@@ -39,7 +47,7 @@ const EventCard = () => {
         </CardContent>
         <CardFooter className='flex flex-1 items-center justify-between'>
             <div className=' text-neutral-300 '>Starts@500BDT</div>
-            <Button variant={'secondary'} className='bg-orange-600 hover:bg-orange-700'>Buy Now</Button>
+            <Button variant={'secondary'} onClick={eventHandler} className='bg-orange-600 hover:bg-orange-700'>Buy Now</Button>
         </CardFooter>
     </Card>
   )

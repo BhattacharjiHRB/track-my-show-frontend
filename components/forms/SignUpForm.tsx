@@ -11,17 +11,17 @@ import { Input } from '../ui/input'
 import { apiFetcher } from '@/hooks/apiFetcher'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
-import { fetchApi } from '@/app/api/axios'
+import { authApi } from '@/app/api/axios'
 
 
 const SignUpForm = () => {
 
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [success, setSeccess] = useState(false)
+ 
 
   const router = useRouter()
-  // const token = localStorage.setItem('token', )
+ 
 
     const form = useForm<z.infer<typeof signUpValidation>>({
        resolver:zodResolver(signUpValidation),
@@ -36,35 +36,25 @@ const SignUpForm = () => {
      
       try {
         setLoading(true)
-        const response = await fetchApi.post('auth/register',{
+        const response = await authApi.post('auth/register',{
           name: value.name || "",
           phone: value.phone || "",
           password: value.password || ""
         })
-
-
         console.log('Signed Up',response.data.json())
-        setSeccess(true)
-       
+        toast.success('Successfully signed up')
+        router.push('/login')
       }
       catch (error:any) {
+        console.log(`Error: ${error.message}`)
         setError(true)
-       console.log(`Error: ${error.message}`)
+        toast.error('Sorry Something went wrong')
       }finally{
         setLoading(false)
       }
   }
   
-     
-      if(error){
-        toast.error('Sorry Something went wrong')
-      }
-
-      if(success){
-        toast.success('Successfully signed up')
-        router.push('/login')
-      
-      }
+   
   return (
     
     <Form {...form}>

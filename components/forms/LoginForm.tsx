@@ -13,7 +13,7 @@ const LoginForm = () => {
     const form = useForm<z.infer<typeof loginValidation>>({
         resolver:zodResolver(loginValidation),
         defaultValues:{
-         email:'',
+         phone:'',
          password:''
         }
      })
@@ -27,12 +27,12 @@ const LoginForm = () => {
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
        <FormField
         control={form.control}
-        name="email"
+        name="phone"
         render={({ field }) => (
           <FormItem>
             {/* <FormLabel>Email</FormLabel> */}
             <FormControl>
-              <Input type='email' placeholder="email@gmail.com" {...field} className='px-6 bg-transparent border-orange-600' />
+              <Input type='phone' placeholder="Enter Your Phone Number" {...field} className='px-6 bg-transparent border-orange-600' />
             </FormControl>
             <FormDescription>
             </FormDescription>
