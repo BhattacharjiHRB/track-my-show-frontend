@@ -3,7 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 import { Button } from '../ui/button'
 import Link from 'next/link'
 
-const BuyTicketCard = () => {
+interface props{
+    id: string;
+}
+
+const BuyTicketCard = ({id}:props) => {
   return (
     <Card className='w-[250px] h-[143px] border-none bg-[#1E1D1D] text-zinc-50'>
         <CardHeader>
@@ -12,7 +16,7 @@ const BuyTicketCard = () => {
             </CardTitle>
         </CardHeader>
         <CardContent>
-            <Link href={'/seat-layout'}>
+            <Link href={`/seatlaytout/${id}`}>
                 <Button variant={'default'} size={'lg'} className='bg-orange-600 w-full' >
                     Buy Ticket
                 </Button>

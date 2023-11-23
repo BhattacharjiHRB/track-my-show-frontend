@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
 import { Button } from '../ui/button'
@@ -7,8 +7,16 @@ import { loginValidation } from '@/lib/validations'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '../ui/input'
+import { authApi } from '@/app/api/axios'
+import ClipLoader from 'react-spinners/ClipLoader'
+import { useRouter } from 'next/navigation'
 
 const LoginForm = () => {
+
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
+  
+  const router = useRouter() 
     
     const form = useForm<z.infer<typeof loginValidation>>({
         resolver:zodResolver(loginValidation),
@@ -18,8 +26,20 @@ const LoginForm = () => {
         }
      })
  
-     const onSubmit = () =>{
-        
+     const onSubmit = async(value: z.infer<typeof loginValidation>) =>{
+      try {
+          setLoading(true)
+          const response = await authApi.post('auth/login',
+            {
+                phone:value.phone || "",
+                password:value.password || ""
+            }
+          )
+          router.push('/')
+      } catch (error) {
+        setError(true)
+        console.log('Error:', error)
+      }
      }
       
   return (
@@ -58,7 +78,17 @@ const LoginForm = () => {
         )}
       />
 
-      <Button type="submit" className='w-full mt-3'>Submit</Button>
+      <Button type="submit" className='w-full mt-3'>
+        {loading ? (
+            <ClipLoader
+            color={'#ffff'}
+            loading={loading}
+            size={30}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+        />
+        ) : 'Login'}
+      </Button>
     </form>
   </Form>
   )
