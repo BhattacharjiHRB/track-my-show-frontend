@@ -37,7 +37,6 @@ export default function Home() {
     
   },[])
 
-  const getUser = async () => {}
 
   if(loading) return <Loading />
   if(error) return toast.error('someting went wrong try again')
@@ -46,7 +45,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between gap-10 p-24">
 
     {event && event.posts.length === 0?(
-      <h1 className="text-center font-bold text-orange-500">No Shows Available </h1>
+      <h1 className="text-center text-xl font-bold text-orange-300">No Shows Available </h1>
     ):(
       <>
       

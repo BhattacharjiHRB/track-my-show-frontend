@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { set, useForm } from 'react-hook-form'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormMessage } from '../ui/form'
 import { Button } from '../ui/button'
-import { signUpValidation } from '@/lib/validations'
+import { signUpValidation } from '@/lib/validations/auth'
 import * as z from 'zod'
 import ClipLoader from "react-spinners/ClipLoader";
 import { zodResolver } from '@hookform/resolvers/zod'

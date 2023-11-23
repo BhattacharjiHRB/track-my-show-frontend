@@ -47,7 +47,7 @@ const Footer = () => {
         </div>
     </footer>
     <footer className=' container mx-auto px-4 py-4 items-center justify-center'>
-       <p className=''>&copy; {new Date().getFullYear()} - All Rights Reserved by Track My Show</p>
+       <p className='text-center'>&copy; {new Date().getFullYear()} - All Rights Reserved by Track My Show</p>
     </footer>
    </>
   )
