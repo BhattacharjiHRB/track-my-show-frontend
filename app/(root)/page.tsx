@@ -6,7 +6,7 @@ import EventCard from "@/components/cards/EventCard";
 import Loading from "@/components/shared/Loading";
 
 
-export default function Home() {
+export default function page() {
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -18,9 +18,9 @@ export default function Home() {
     const getEvent = async () => {
       setLoading(true)
       try {
-        const response = await fetchApi.get('/event',)
-        const data = await response.data.json()
-        setEvent(data)
+        const response = await fetchApi.get('event',)
+        const data = response.data.json()
+        setEvent(response.data)
         console.log(data)
       } catch (error:any) {
         setError(true)
@@ -56,7 +56,7 @@ export default function Home() {
             imageUrl={post.imageUrl}
             slug={post.slug}
             eventName={post.eventName}
-            organizerName={post.organizerName}        
+            organizer={post.organizer.name}        
             genres={post.genres}
             location={post.location}
             time={post.time} 

@@ -36,6 +36,7 @@ const LoginForm = () => {
             }
           )
           router.push('/')
+          console.log(response.data)
       } catch (error) {
         setError(true)
         console.log('Error:', error)
@@ -78,6 +79,7 @@ const LoginForm = () => {
         )}
       />
 
+      {error && <h1 className='text-red-500 font-bold text-center animate-bounce'>OOPS! Please Try Again</h1> }
       <Button type="submit" className='w-full mt-3'>
         {loading ? (
             <ClipLoader

@@ -6,7 +6,6 @@ import { Users2 } from 'lucide-react'
 import { Button } from '../ui/button'
 import { Badge } from '../ui/badge'
 import { Separator } from '../ui/separator'
-import toast from 'react-hot-toast'
 import Link from 'next/link'
 
 interface props {
@@ -15,7 +14,9 @@ interface props {
     slug: string;
     imageUrl : string;
     eventName: string;
-    organizerName: string;
+    organizer:{
+        name: string;
+    };
     genres: string;
     location: string;
     time: string
@@ -28,7 +29,7 @@ const EventCard = (
         slug,
         imageUrl,
         eventName,
-        organizerName,
+        organizer,
         genres,
         location,
         time,
@@ -52,7 +53,7 @@ const EventCard = (
             </CardTitle>
             <CardDescription className='flex flex-1 gap-1'>
                 <Users2 className='h-5 w-5' /> 
-                <span className='text-sm text-orange-600 font-semibold'>{organizerName}</span>
+                <span className='text-sm text-orange-600 font-semibold'>{organizer.name}</span>
             </CardDescription>
             <CardDescription>
                 <Badge variant={'outline'} className='text-gray-600 border-neutral-400'>

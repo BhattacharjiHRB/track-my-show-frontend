@@ -8,7 +8,7 @@ export const postEventValidation = z.object({
     organizerName: z.string(),
     genres: z.string(),
     location: z.string(),
-    date: z.date(),
+    date: z.date().min(new Date()),
     time: z.string()
 
 })

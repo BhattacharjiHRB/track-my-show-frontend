@@ -28,12 +28,7 @@ const ShowCard = (
     location,
 }:props) => {
     const [liked , setLiked] = useState(false)
-
-    const like = () => {
-        setLiked(true)
-        console.log(liked)
-    }
-
+    
   return (
     <Link href={`/eventpage/${slug}`}>
     <Card className='w-[330px] h-[330px] bg-[#1E1D1D] border-none' key={id}>

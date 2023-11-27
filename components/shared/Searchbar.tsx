@@ -10,7 +10,6 @@ import {
     DialogTrigger,
   } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Button } from '../ui/button'
 import { Search } from 'lucide-react'
 
@@ -28,7 +27,7 @@ const Searchbar = () => {
         </DialogTrigger>
         <DialogContent>
             <DialogHeader>
-                <DialogTitle>Search</DialogTitle>
+                <DialogTitle>Search Event</DialogTitle>
             </DialogHeader>
             <div className='items-center'>
                 <div className='mb-5'>

@@ -1,19 +1,22 @@
 'use client'
 import { fetchApi } from '@/app/api/axios'
 import { Button } from '@/components/ui/button'
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { postEventValidation } from '@/lib/validations/event'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Calendar } from '@/components/ui/calendar'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import ClipLoader from 'react-spinners/ClipLoader'
 import { z } from 'zod'
+import { Textarea } from '../ui/textarea'
 
 const PostEventForm = () => {
 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
+    const [date, setDate] = useState<Date | undefined >(new Date())
     
 
     const form = useForm<z.infer<typeof postEventValidation>>({
@@ -40,9 +43,11 @@ const PostEventForm = () => {
                 time: value.time || ""
             })
             console.log('Posted Event',response.data.json())
+            setDate(response.data.date)
             
         } catch (error) {
             console.log("Error:", error)
+            setError(true)
         }finally{
           setLoading(false)
         }
@@ -79,12 +84,59 @@ const PostEventForm = () => {
         />
           <FormField
           control={form.control}
+          name="eventName"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Event slug</FormLabel>
+              <FormControl>
+                <Input type='text' placeholder="Event Name" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+          <FormField
+          control={form.control}
+          name="eventName"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Event Description</FormLabel>
+              <FormControl>
+                <Textarea 
+                  rows={5}
+                  placeholder="Event Name" 
+                  {...field} 
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+          <FormField
+          control={form.control}
           name="organizerName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Orgranizer Name</FormLabel>
+              <FormLabel>Gallery Image</FormLabel>
               <FormControl>
-                <Input type='text' placeholder="organizer Name" {...field} />
+                <Input type='file' placeholder="organizer Name" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="organizerName"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>About</FormLabel>
+              <FormControl>
+                <Textarea 
+                  rows={5} 
+                  placeholder="About Event" 
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -118,17 +170,36 @@ const PostEventForm = () => {
         />
         <FormField
           control={form.control}
-          name="date"
+          name="location"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Event Time</FormLabel>
+              <FormLabel>Venue Feature</FormLabel>
               <FormControl>
-                {/* <Input type= 'datetime-local' placeholder="date" {...field} /> */}
+                <Input type='text' placeholder="Features" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+        <div className=''>
+
+        <FormField
+          control={form.control}
+          name="date"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Event Date</FormLabel>
+              <FormControl>
+                <Calendar 
+                  mode='single'
+                  selected={date}
+                  onSelect={setDate}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+          />
           <FormField
           control={form.control}
           name="time"
@@ -141,12 +212,10 @@ const PostEventForm = () => {
               <FormMessage />
             </FormItem>
           )}
-        />
-        
+          />
+          </div>
+        {error && <h1 className='text-red-500 font-bold text-center animate-bounce'>OOPS! Please Try Again</h1> }
         <Button type="submit" className='w-full'>
-
-          {error && <h1 className='text-red-500 animate-bounce'>OOPS! Please Try Again</h1> }
-
           {loading ? (
             <div className='flex items-center'>
                <ClipLoader
@@ -155,7 +224,7 @@ const PostEventForm = () => {
                   size={30}
                   aria-label="Loading Spinner"
                   data-testid="loader"
-              />
+                  />
               <h1 className=' animate-pulse'>Loading..</h1>
             </div>
           ) : "Post"}
