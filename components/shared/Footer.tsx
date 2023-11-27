@@ -22,8 +22,8 @@ const Footer = () => {
                         />):(  <Image 
                             src={'/assets/logos/tms-logo-dark.svg'} 
                             alt={'logo'} 
-                            width={65} 
-                            height={65} 
+                            width={150} 
+                            height={150} 
                             className='object-contain' 
                             priority={true}
                         />)}

@@ -95,7 +95,7 @@ const page = ({params}:{params:{id:string}},
                     />
                 ))}
             </>
-          ) }
+          )}
         </div>
     </div>
   )
