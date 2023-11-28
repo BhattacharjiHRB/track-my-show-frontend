@@ -10,30 +10,33 @@ export default function page() {
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
-  const [event, setEvent] = useState<any>('')
+  const [event, setEvent] = useState([])
+
+  const loadEvent =  async () => {
+    console.log('start event')
+
+    try {
+      setLoading(true)
+      const response = await fetchApi().get('event')
+      setEvent(response.data)
+      setLoading(false);
+    } catch (error:any) {
+      setLoading(false)    
+      console.log(`ERROR: ${error.message}`)
+    }
+  }
 
   
  
   useEffect(()=>{
-    const getEvent = async () => {
-      setLoading(true)
-      try {
-        const response = await fetchApi.get('event',)
-        const data = response.data.json()
-        setEvent(response.data)
-        console.log(data)
-      } catch (error:any) {
-        setError(true)
-        console.log(`ERROR: ${error.message}`)
-      }
-      setLoading(false)
-    
-    }
-    getEvent()
-    console.log(event)
-    return () => {
-      setEvent(null)
-    }
+    console.log('start event ee')
+
+
+    loadEvent();
+
+    // return () => {
+    //   setEvent([])
+    // }
     
   },[])
 
@@ -44,13 +47,13 @@ export default function page() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between gap-10 p-24">
 
-    {event && event.posts.length === 0?(
+    {/* {event && event.posts.length === 0?(
       <h1 className="text-center text-xl font-bold text-orange-300">No Shows Available </h1>
     ):(
       <>
       
       <div className="grid grid-flow-row grid-col-1 lg:grid-col-2 md:grid-col-4 sm:grid-col-3 items-center justify-between">
-        {event && event.posts.map((post:any) => (
+        {event && event.posts.map((post) => (
           <EventCard 
             id={post.id}
             imageUrl={post.imageUrl}
@@ -65,7 +68,7 @@ export default function page() {
        </div>
             
       </>
-    )}
+    )} */}
     
      
     </main>

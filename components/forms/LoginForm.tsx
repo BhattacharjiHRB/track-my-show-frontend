@@ -35,8 +35,18 @@ const LoginForm = () => {
                 password:value.password || ""
             }
           )
-          router.push('/')
-          console.log(response.data)
+          
+          // router.push('/')
+
+          if(response.status === 200){
+            if(response.data.data.accessToken.token){
+              localStorage.setItem('token', response.data.data.accessToken.token)
+              router.push('/')
+            }
+          }
+
+          
+          console.log(response.status, response.data.data.accessToken.token);
       } catch (error) {
         setError(true)
         console.log('Error:', error)
