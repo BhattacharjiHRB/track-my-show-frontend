@@ -10,6 +10,7 @@ import { Input } from '../ui/input'
 import { authApi } from '@/app/api/axios'
 import ClipLoader from 'react-spinners/ClipLoader'
 import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 const LoginForm = () => {
 
@@ -36,13 +37,22 @@ const LoginForm = () => {
             }
           )
           
-          // router.push('/')
+
 
           if(response.status === 200){
             if(response.data.data.accessToken.token){
               localStorage.setItem('token', response.data.data.accessToken.token)
               router.push('/')
             }
+          }
+
+          if(response.status === 401){
+            toast.error("Incorrect password")
+            return (
+              <>
+                <h1 className='text-xl font-bold text-red-500 animate-bounce'>Incorrect Password</h1>
+              </>
+            )
           }
 
           

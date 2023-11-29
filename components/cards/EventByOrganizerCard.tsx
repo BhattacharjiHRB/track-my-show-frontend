@@ -12,14 +12,17 @@ interface props {
     slug: string;
     imageUrl : string;
     eventName: string;
-    organizerName: string;
+    organizer: {
+        id: string;
+        name: string;
+    };
     genres: string;
     location: string;
     time: string
 }
 
 
-const ShowCard = (
+const EventByOrganizerCard = (
     { 
     id,
     slug,
@@ -70,4 +73,4 @@ const ShowCard = (
   )
 }
 
-export default ShowCard
+export default EventByOrganizerCard

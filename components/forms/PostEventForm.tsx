@@ -34,7 +34,7 @@ const PostEventForm = () => {
     const onSubmit = async(value: z.infer<typeof postEventValidation>) => {
         try {
           setLoading(true)
-            const response = await fetchApi.post('event',{
+            const response = await fetchApi().post('event',{
                 eventName: value.eventName || "",
                 organizerName: value.organizerName || "",
                 genres: value.genres || "",

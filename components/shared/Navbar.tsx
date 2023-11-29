@@ -10,14 +10,16 @@ import UserAvatarIcon from './UserAvatarIcon'
 import ToggleTheme from './ToggleTheme'
 import { useTheme } from 'next-themes'
 import Searchbar from './Searchbar'
+import { getTokenToLocalStorage } from '@/app/api/axios'
 
 const Navbar = () => {
     const {theme} = useTheme()
     const isDark = theme === 'dark'
+
     
   return (
     <header className=' sm:flex sm:items-center sm:justify-center border-b border-neutral-800 gap-14'>
-        <div className='relative px-4 sm:px-6 lg:px-8 flex h-20 items-center justify-between w-full z-10'>
+        <div className='relative px-4 sm:px-6 lg:px-8 flex h-20 items-center justify-evenly w-full z-10'>
         {/* Mobile resposive navigation tabs */}
             <div className='flex w-10 items-center m-5 '>
                 <Sheet>
@@ -113,33 +115,37 @@ const Navbar = () => {
 
                     </Link>
             {/* Navigation right side buttons */}
-            <div className='flex items-center ml-16 gap-2 max-sm:hidden mr-10'>
+            <div className='flex items-center ml-16 gap-2 max-sm:hidden mr-28'>
                     
                    <Searchbar />
-                    <Link href={'/login'}>
-                        <Button className='bg-orange-600 text-sm'>
-                            <p className='flex flex-1 items-center justify-between'>
+                   {getTokenToLocalStorage() ? (
+                     
+                       <UserAvatarIcon />
+                   ) : (
+                    <><Link href={'/login'}>
+                    <Button className='bg-orange-600 text-sm'>
+                        <p className='flex flex-1 items-center justify-between'>
                             <span>
                                 <LogIn className='w-6 h-6 mr-2' />
                             </span>
                             Login
-                            </p>
-                        </Button>
-                    </Link>
-                    <Link href={'/sign-up'}>
-                        <Button 
-                        className='text-sm hover:bg-orange-300/10 hover:text-orange-600' 
-                        variant={'ghost'}
+                        </p>
+                    </Button>
+                </Link><Link href={'/sign-up'}>
+                        <Button
+                            className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
+                            variant={'ghost'}
                         >
                             <p className='flex flex-1 items-center justify-between'>
-                            <span>
-                                <KeyRound className='w-6 h-6 mr-2' />
-                            </span>
-                            Sign Up
+                                <span>
+                                    <KeyRound className='w-6 h-6 mr-2' />
+                                </span>
+                                Sign Up
                             </p>
                         </Button>
-                    </Link>            
-                    <UserAvatarIcon />
+                    </Link></>    
+                   )}
+                          
                     <ToggleTheme />
                 </div>
         </div>

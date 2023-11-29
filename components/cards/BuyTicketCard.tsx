@@ -5,14 +5,15 @@ import Link from 'next/link'
 
 interface props{
     id: string;
+    price: number;
 }
 
-const BuyTicketCard = ({id}:props) => {
+const BuyTicketCard = ({id, price}:props) => {
   return (
     <Card className='w-[250px] h-[143px] border-none bg-[#1E1D1D] text-zinc-50'>
         <CardHeader>
             <CardTitle>
-                Starts @500 BDT
+                Starts @{price} BDT
             </CardTitle>
         </CardHeader>
         <CardContent>

@@ -9,6 +9,8 @@ import { useTheme } from 'next-themes'
 const page = () => {
     const {theme} = useTheme()
     const isDark = theme === 'dark'
+
+    
   return (
     <div>
        <div className='min-h-screen flex flex-col items-center justify-center'>

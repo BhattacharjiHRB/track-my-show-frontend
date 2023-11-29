@@ -3,8 +3,18 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import Link from 'next/link'
 import { Heart, LogOut, Settings, Smile, Ticket } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 const UserAvatarIcon = () => {
+    const router = useRouter()
+
+    const logOut = () => {
+        localStorage.removeItem('token')
+        window.location.reload()
+        router.push('/login')
+    
+    }
+
   return (
     <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -54,7 +64,7 @@ const UserAvatarIcon = () => {
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                     <Link href={'/user-profile'}>
-                        <h6 className='flex text-red-600'>
+                        <h6 className='flex text-red-600' onClick={logOut}>
                             <LogOut className='w-5 h-5 mr-2' />
                             <span>Logout</span>
                         </h6>

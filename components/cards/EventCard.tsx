@@ -15,11 +15,13 @@ interface props {
     imageUrl : string;
     eventName: string;
     organizer:{
+        id: string;
         name: string;
     };
     genres: string;
     location: string;
-    time: string
+    time: string;
+    price:string;
 }
 
 
@@ -33,12 +35,13 @@ const EventCard = (
         genres,
         location,
         time,
+        price
     }:props) => {
 
 
 
   return (
-    <Card className='w-[330px] h-[450px] flex flex-col bg-[#1E1D1D] border-none' key={id} >
+    <Card className='w-[330px] h-[550px] flex flex-col bg-[#1E1D1D] border-none' key={id} >
         <CardHeader>
             <Image 
                 src={imageUrl} 
@@ -46,7 +49,7 @@ const EventCard = (
                 width={300} 
                 height={150}
                 priority = {true} 
-                className='object-cover aspect-3/4 bg-neutral-800 animate-pulse mb-3' 
+                className='object-cover' 
             />
             <CardTitle className='text-white font-bold'>
                 {eventName}
@@ -68,7 +71,7 @@ const EventCard = (
             <Separator className='my-2'/>
         </CardContent>
         <CardFooter className='flex flex-1 items-center justify-between'>
-            <div className=' text-neutral-300 '>Starts@500BDT</div>
+            <div className=' text-neutral-300 '>Starts@{price}</div>
             <Link href={`/event/${slug}`}>
                 <Button variant={'secondary'} className='bg-orange-600 hover:bg-orange-700'>Buy Now</Button>
             </Link>
