@@ -4,11 +4,11 @@ export const navRoutes = [
         label:"Home"
     },
     {
-        href: '/',
+        href: '/shows',
         label:"Shows"
     },
     {
-        href: '/',
+        href: '/about-us',
         label:"About Us"
     }
 ]

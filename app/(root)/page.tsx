@@ -4,6 +4,7 @@ import { fetchApi } from "../api/axios"
 import toast from "react-hot-toast"
 import EventCard from "@/components/cards/EventCard";
 import Loading from "@/components/shared/Loading";
+import Image from "next/image";
 
 
 export default function page() {
@@ -41,8 +42,23 @@ export default function page() {
   if(error) return toast.error('someting went wrong try again')
 
   return (
-    <main className="grid w-full min-h-screen grid-flow-row items-center justify-evenly">
-      <div className="grid grid-flow-col grid-col-1 lg:grid-col-2 md:grid-col-2 sm:grid-col-3 items-center justify-evenly gap-4">
+    <main className="flex w-full min-h-screen flex-col items-center justify-evenly">
+
+      <div className="flex flex-1 w-2/3 max-md:flex-col-reverse justify-between gap-10 mt-16">
+          <div className="flex flex-col items-start justify-center ">
+              <h1 className="text-6xl max-md:text-3xl max-sm:text-xl font-bold text-justify"> Never miss your <br /> Favorite Shows</h1>
+              <p className="text-xl text-gray-400 text-justify">Find the best shows across Dhaka City <br /> Book your seats now</p>
+          </div>
+          <Image 
+            src={''}
+            alt="Photo"
+            width={700}
+            height={500}
+            className=" object-fill bg-neutral-800 rounded-xl"
+          />
+      </div>
+
+      <div className="grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 justify-evenly mt-14 gap-4">
       {event ?event.map((ev:any) => (
         <EventCard 
           id={ev.id} 

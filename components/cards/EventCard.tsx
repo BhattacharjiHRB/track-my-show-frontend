@@ -41,7 +41,7 @@ const EventCard = (
 
 
   return (
-    <Card className='w-[330px] h-[550px] flex flex-col bg-[#1E1D1D] border-none' key={id} >
+    <Card className='w-[350px] h-[550px] flex flex-col bg-[#1E1D1D] border-none' key={id} >
         <CardHeader>
             <Image 
                 src={imageUrl} 
@@ -72,7 +72,7 @@ const EventCard = (
         </CardContent>
         <CardFooter className='flex flex-1 items-center justify-between'>
             <div className=' text-neutral-300 '>Starts@{price}</div>
-            <Link href={`/event/${slug}`}>
+            <Link href={`/eventprofile/${slug}`}>
                 <Button variant={'secondary'} className='bg-orange-600 hover:bg-orange-700'>Buy Now</Button>
             </Link>
         </CardFooter>

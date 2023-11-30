@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 interface props{
     id: string;
-    price: number;
+    price: string;
 }
 
 const BuyTicketCard = ({id, price}:props) => {
