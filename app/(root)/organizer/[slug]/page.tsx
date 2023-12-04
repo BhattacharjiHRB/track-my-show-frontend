@@ -6,30 +6,37 @@ import Loading from '@/components/shared/Loading';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 
+interface organizerEventProp{
+  id: string; 
+  slug: string; 
+  cover: string; 
+  name: string; 
+  organization_id: any; 
+  category_id: string; 
+  venue_id: string; 
+  scheduled_at: string; 
 
+}
 
-const page = ({params}:{params:{slug:string}} ) => {
+const page = ({params}:{params:{slug:string}}) => {
 
-    
         const [loading, setLoading] = useState(false)
         const [error, setError] = useState(false)
-        const [organizer, setOrganizer] = useState([])
-        const [organizerEvent, setOrganizerEvent] = useState<any[]>([])
+        const [organizerEvent, setOrganizerEvent] = useState<organizerEventProp[]>([])
 
-        const getOrganizer = async () => {
+        const getOrganizer = async (slug:string) => {
           try {
             setLoading(true)
-              const response = await fetchApi().get(`organizer`)
-              setOrganizer(response.data.data)
+              const response = await fetchApi().get(`organizer/${slug}`)
               console.log('organizerInfo',response.data.data)
           } catch (error) {
             console.log(error)
             setError(true)
+            setLoading(false)
           }finally{
             setError(false)
           }
         }
-
 
         const getData = async() =>{
           console.log("getevent")
@@ -38,7 +45,6 @@ const page = ({params}:{params:{slug:string}} ) => {
                 const response = await fetchApi().get(`event-by-organization`,)
                 setOrganizerEvent(response.data.data)
                 console.log(response.data.data)
-                
             } catch (error) {
                 console.log(error)
                 setError(true)
@@ -48,25 +54,24 @@ const page = ({params}:{params:{slug:string}} ) => {
         }
 
         useEffect(()=>{
-            getOrganizer()
+            getOrganizer(params.slug)
             getData()
         },[])
+
+        const organizerInfo = getOrganizer(params.slug)  
         
         if(loading) return <Loading />
         if(error) return toast.error('Something Went Wrong')
-        console.log(organizer)
+      
 
       return (
           <div className='flex flex-col items-center justify-center'>
-            {organizer.map((org:any) => (
-              <OrganizerProfile 
-                id={org.id}            
-                imageUrl={org.cover}
-                name={org.slug}
-                description={org.description} 
-              />
-
-            ))}
+              {/* <OrganizerProfile 
+                id={organizerInfo.slug}            
+                imageUrl={organizerInfo.cover}
+                name={organizerInfo.name}
+                description={organizerInfo.description} 
+              />*/}
             <h1 className='text-xl font-bold text-center'>Event organized by this Organizer </h1>
               <div className='grid grid-flow-row grid-cols-1 lg:grid-cols-2 md:grid-cols-4 sm:grid-cols-3 gap-4 mt-4 mb-4 w-full px-4 justify-center items-center  '>
                 {organizerEvent && organizerEvent.length === 0 ? 

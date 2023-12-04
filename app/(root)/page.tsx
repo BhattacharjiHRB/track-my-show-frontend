@@ -14,18 +14,16 @@ export default function page() {
   const [event, setEvent] = useState<[]>([])
 
   const loadEvent =  async () => {
-    console.log('start event')
-
+  
     try {
       setLoading(true)
       const response = await fetchApi().get('event')
       console.log(response.data.data)
       setEvent(response.data.data)
-      
     } catch (error:any) {
       setError(true)    
       console.log(`ERROR: ${error.message}`)
-      toast.error("Data is not fetching")
+      toast.error("Failed To Load! Please Refresh")
     }finally{
       setLoading(false)
     }

@@ -52,7 +52,11 @@ const FindByDate = () => {
           </SelectContent>
         </Select>
         <div className="rounded-md border">
-          <Calendar mode="single" selected={date} onSelect={setDate} />
+          <Calendar 
+            mode="single" 
+            selected={date} 
+            onSelect={setDate}
+          />
         </div>
       </PopoverContent>
     </Popover>

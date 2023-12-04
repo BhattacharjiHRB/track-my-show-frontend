@@ -5,7 +5,13 @@ export const setTokenToLocalStorage = (token: string) =>{
 }
 
 export const getTokenToLocalStorage = () =>{
-    return localStorage.getItem('token');
+
+    if(typeof window !== 'undefined' && localStorage.getItem('token') !== null){
+        return localStorage.getItem('token')
+    }
+    else{
+        return null
+    }
 }
 
 

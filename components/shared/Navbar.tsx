@@ -19,6 +19,7 @@ const Navbar = () => {
 
     const pathName = usePathname()
     const token = getTokenToLocalStorage()
+
     
   return (
     <header className=' sm:flex sm:items-center sm:justify-center border-b border-neutral-800 gap-14'>

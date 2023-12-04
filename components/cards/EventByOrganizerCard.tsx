@@ -56,17 +56,17 @@ const EventByOrganizerCard = (
         </CardTitle>
         </CardHeader>
         <CardContent>
-            <p>
+            <h6>
                 <div className='text-xl font-bold text-white mb-2 '>
                     {eventName}
                 </div>
-            </p>
-            <p>
+            </h6>
+            <h6>
                 <div className='text-md flex flex-1 text-neutral-500'>
                     <span><MapPin className='w-5 h-5 mr-2'  /></span>
                     {location}
                 </div>
-            </p>
+            </h6>
         </CardContent>
     </Card>
     </Link>
