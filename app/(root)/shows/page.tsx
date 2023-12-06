@@ -1,13 +1,53 @@
-import React from 'react'
+'use client'
+import React, {  useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 import FindByDate from '@/components/shared/FindByDate'
 import FindByPlace from '@/components/shared/FindByPlace'
 import EventCard from '@/components/cards/EventCard'
+import { fetchApi } from '@/app/api/axios'
 
+
+
+interface showProps{
+    id:string;
+    slug:string;
+    cover:string;
+    name:string;
+    organizer:{
+        slug:string;
+        name:string;
+    };
+    category:string;
+    location:string;
+    time:string;
+    price:string;
+}
 
 const page = () => {
+    const [show, setShow] = useState<showProps[]>([])
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
+
+    const fetchShow = async() => {
+        try {
+            setLoading(true)
+            const response = await fetchApi().get('event')
+            console.log('shows',response.data.data)
+            setShow(response.data.data)
+        } catch (error:any) {
+            console.log(error.response.data)
+            setError(true)
+        }finally{
+            setLoading(false)
+        }
+      
+    }
+
+    useEffect(()=>{
+        fetchShow()
+    })
   return (
    <section className='flex flex-col items-center justify-center p-5'>
         <Image 
@@ -34,20 +74,36 @@ const page = () => {
             </div>
         </div> 
         <div className='grid grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1 justify-evenly mt-10 gap-5'>
-            <EventCard 
-                id={''} 
-                slug={''} 
-                imageUrl={''} 
-                eventName={''} 
-                organizer={{
-                    id: '',
-                    name: ''
-                }} 
-                genres={''} 
-                location={''} 
-                time={''} 
-                price={''}            
-            />
+        {/* {loading && (
+            <div className='text-center text-orange-600 animate-pulse'>
+                Loading....
+            </div>
+        )} */}
+            {show.length === 0 ? (
+                <h1 className='text-xl text-center text-gray-600 font-bold mt-5'>
+                    No Show available
+                </h1>
+            ):(
+                <>
+                    {show.map((show)=>(
+                        <EventCard 
+                            id={show.id} 
+                            slug={show.slug} 
+                            imageUrl={show.cover} 
+                            eventName={show.name} 
+                            organizer={{
+                                slug:show.organizer.slug,
+                                name:show.organizer.name,
+                            }} 
+                            genres={show.category} 
+                            location={show.location} 
+                            time={show.time} 
+                            price={show.price}            
+                        />
+
+                    ))}
+                </>
+            )}
         </div>
    </section>
   )

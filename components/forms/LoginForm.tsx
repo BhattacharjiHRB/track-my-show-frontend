@@ -47,7 +47,6 @@ const LoginForm = () => {
           }
 
           if(response.status === 401){
-            toast.error("Incorrect password")
             return (
               <>
                 <h1 className='text-xl font-bold text-red-500 animate-bounce'>Incorrect Password</h1>

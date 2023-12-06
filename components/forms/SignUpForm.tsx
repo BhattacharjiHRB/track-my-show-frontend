@@ -41,7 +41,7 @@ const SignUpForm = () => {
           phone: value.phone || "",
           password: value.password || ""
         })
-        console.log('Signed Up',response.data.json())
+        console.log('Signed Up',response.data.data)
         toast.success('Successfully signed up')
         router.push('/login')
       }
@@ -109,6 +109,7 @@ const SignUpForm = () => {
       />
 
       <Button type="submit" className='w-full mt-3'>
+      {error && <h1 className='text-red-500 font-bold text-center animate-bounce'>OOPS! Please Try Again</h1> }
           {loading ? (
             <>
                <ClipLoader

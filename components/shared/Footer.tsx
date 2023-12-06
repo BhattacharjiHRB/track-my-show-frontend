@@ -15,15 +15,15 @@ const Footer = () => {
         {isDark ? (<Image 
                             src={'/assets/logos/tms-logo.svg'} 
                             alt={'logo'} 
-                            width={150} 
-                            height={150} 
+                            width={100} 
+                            height={100} 
                             className='object-contain' 
                             priority={true}
                         />):(  <Image 
                             src={'/assets/logos/tms-logo-dark.svg'} 
                             alt={'logo'} 
-                            width={150} 
-                            height={150} 
+                            width={100} 
+                            height={100} 
                             className='object-contain' 
                             priority={true}
                         />)}

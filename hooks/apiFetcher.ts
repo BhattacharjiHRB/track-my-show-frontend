@@ -13,7 +13,7 @@ export const apiFetcher = ( urlPath:string  ) => {
   const apiFetching = async() => {
     try {
         setLoading(true)
-        const response = await fetchApi.post(urlPath)
+        const response = await fetchApi()(urlPath)
         console.log(response.data)
         setSeccess(true)
     } catch (error:any) {

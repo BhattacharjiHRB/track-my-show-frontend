@@ -24,10 +24,10 @@ const page = ({params}:{params:{slug:string}}) => {
         const [error, setError] = useState(false)
         const [organizerEvent, setOrganizerEvent] = useState<organizerEventProp[]>([])
 
-        const getOrganizer = async (slug:string) => {
+        const getOrganizer = async() => {
           try {
             setLoading(true)
-              const response = await fetchApi().get(`organizer/${slug}`)
+              const response = await fetchApi().get(`organizer`)
               console.log('organizerInfo',response.data.data)
           } catch (error) {
             console.log(error)
@@ -54,11 +54,10 @@ const page = ({params}:{params:{slug:string}}) => {
         }
 
         useEffect(()=>{
-            getOrganizer(params.slug)
+            getOrganizer()
             getData()
         },[])
-
-        const organizerInfo = getOrganizer(params.slug)  
+         
         
         if(loading) return <Loading />
         if(error) return toast.error('Something Went Wrong')
@@ -66,12 +65,12 @@ const page = ({params}:{params:{slug:string}}) => {
 
       return (
           <div className='flex flex-col items-center justify-center'>
-              {/* <OrganizerProfile 
-                id={organizerInfo.slug}            
-                imageUrl={organizerInfo.cover}
-                name={organizerInfo.name}
-                description={organizerInfo.description} 
-              />*/}
+              <OrganizerProfile 
+                id={''} 
+                imageUrl={''} 
+                name={''} 
+                description={''}                
+              />
             <h1 className='text-xl font-bold text-center'>Event organized by this Organizer </h1>
               <div className='grid grid-flow-row grid-cols-1 lg:grid-cols-2 md:grid-cols-4 sm:grid-cols-3 gap-4 mt-4 mb-4 w-full px-4 justify-center items-center  '>
                 {organizerEvent && organizerEvent.length === 0 ? 

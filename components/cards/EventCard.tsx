@@ -15,7 +15,7 @@ interface props {
     imageUrl : string;
     eventName: string;
     organizer:{
-        id: string;
+        slug: string;
         name: string;
     };
     genres: string;
@@ -41,7 +41,7 @@ const EventCard = (
 
 
   return (
-    <Card className='w-[350px] h-[550px] flex flex-col bg-[#1E1D1D] border-none' key={id} >
+    <Card className='w-[350px] h-[550px] flex flex-col bg-[#1E1D1D] border-none' >
         <CardHeader>
             <Image 
                 src={imageUrl} 
@@ -55,8 +55,10 @@ const EventCard = (
                 {eventName}
             </CardTitle>
             <CardDescription className='flex flex-1 gap-1'>
-                <Users2 className='h-5 w-5' /> 
-                <span className='text-sm text-orange-600 font-semibold'>{organizer.name}</span>
+                <Link href={`/organizer/${organizer.slug}`}>
+                    <Users2 className='h-5 w-5' /> 
+                    <span className='text-sm text-orange-600 font-semibold'>{organizer.name}</span>
+                </Link>
             </CardDescription>
             <CardDescription>
                 <Badge variant={'outline'} className='text-gray-600 border-neutral-400'>

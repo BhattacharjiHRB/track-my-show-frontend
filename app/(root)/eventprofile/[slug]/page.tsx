@@ -5,6 +5,10 @@ import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import React from 'react'
 
+export const getEventDetails = (slug:string) => {
+
+}
+
 const page = ({params}:{params:{slug:string}}) => {
 
 
@@ -31,7 +35,7 @@ const page = ({params}:{params:{slug:string}}) => {
           </div>
         </div>
         <div className=' w-2/3 flex flex-col space-x-4 space-y-2 items-center justify-between m-10'>
-          <h1 className='text-start text-3xl font-bold mb-2'>Event Date and Time</h1>
+          <h1 className='text-start text-3xl max-lg:text-xl max-md:text-lg font-bold mb-2'>Event Date and Time</h1>
            <ShowDateCard />
         </div>
         <div className=' w-2/3 border border-neutral-800 mb-10' />
@@ -63,6 +67,7 @@ const page = ({params}:{params:{slug:string}}) => {
                 <li>Some Featuures</li>
               </ol>
           </div>
+
         </div>
     </section>
   )
