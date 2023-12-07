@@ -7,20 +7,17 @@ import Loading from "@/components/shared/Loading";
 import Image from "next/image";
  
 interface eventProps{
- 
-  id:string;
-  slug:string;
-  cover:string;
-  name:string;
-  organizer:{
-
-    organizer_id:string;
+  
+    id:string;
+    slug:string;
+    cover:string;
     name:string;
-  }
-  category_id:string;
-  venue_id:string;
-  scheduled_at:string;
-  ticket_price:string;
+    organizer_id:string;
+    organizer_name:string;
+    category_id:string;
+    venue_id:string;
+    scheduled_at:string;
+    ticket_price:string;
 }
 
 export default function page() {
@@ -39,7 +36,7 @@ export default function page() {
     } catch (error:any) {
       setError(true)    
       console.log(`ERROR: ${error.message}`)
-      toast.error("Failed To Load! Please Refresh")
+      toast.error("Please Sign In")
     }finally{
       setLoading(false)
     }
@@ -79,8 +76,8 @@ export default function page() {
           imageUrl={ev.cover} 
           eventName={ev.name} 
           organizer={{
-            slug: ev.organizer.organizer_id,
-            name: ev.organizer.name,
+            slug: ev.organizer_id,
+            name: ev.organizer_name,
           }} 
           genres={ev.category_id} 
           location={ev.venue_id} 

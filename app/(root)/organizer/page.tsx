@@ -27,6 +27,7 @@ export default function page() {
             setLoading(true)
           const res = await fetchApi().get('organizer');
           const data = await res.data.data;
+          console.log(data)
           setOrg(data)
         } catch (error) {
          console.log(error)
@@ -38,7 +39,7 @@ export default function page() {
      }
     useEffect(()=>{
         getOrganizers()
-    })
+    },[])
 
     if(loading) return <Loading />
     if(error) return <Loading />
@@ -47,7 +48,7 @@ export default function page() {
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center">
       <h1 className="text-6xl text-orange-600 font-bold ">Organizers</h1>
-      <div className="grid grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1 gap-4 justify-evenly items-center">
+      <div className="flex flex-col items-center justify-between mt-10 gap-4 ">
         {org.map((organizer) => (
             <OrganizerList 
                 id={organizer.id}

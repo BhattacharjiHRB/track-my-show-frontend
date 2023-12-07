@@ -6,14 +6,14 @@ export const setTokenToLocalStorage = (token: string) =>{
 
 export const getTokenToLocalStorage = () =>{
 
-    // if(typeof window !== 'undefined' && localStorage !== null ){
+    if(typeof window !== 'undefined' && localStorage !== null ){
 
-    //     return localStorage.getItem('token') ;
-    // }else {
-    //     return null;
-    // }
+        return localStorage.getItem('token') ;
+    }else {
+        return null;
+    }
     
-    return localStorage.getItem('token');
+    // return localStorage.getItem('token');
 
 }
 

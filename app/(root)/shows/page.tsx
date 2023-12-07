@@ -15,10 +15,8 @@ interface showProps{
     slug:string;
     cover:string;
     name:string;
-    organizer:{
-        slug:string;
-        name:string;
-    };
+    organizer_id:string;
+    organizer_name:string;
     category:string;
     location:string;
     time:string;
@@ -92,8 +90,8 @@ const page = () => {
                             imageUrl={show.cover} 
                             eventName={show.name} 
                             organizer={{
-                                slug:show.organizer.slug,
-                                name:show.organizer.name,
+                                slug:show.organizer_id,
+                                name:show.organizer_name,
                             }} 
                             genres={show.category} 
                             location={show.location} 
