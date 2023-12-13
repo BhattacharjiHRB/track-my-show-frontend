@@ -32,7 +32,7 @@ const CreateOrganizer = () => {
     const onSubmit = async(value: z.infer<typeof organizerValidation>) =>{
       try {
         setLoading(true)
-          const response = await fetchApi.post('organizer',{
+          const response = await fetchApi().post('organizer',{
               name:value.name || "",
               slug:value.slug || "",
               description:value.description || "",

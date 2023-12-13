@@ -1,16 +1,33 @@
+'use client'
+
+import { fetchApi } from '@/app/api/axios'
 import BuyTicketCard from '@/components/cards/BuyTicketCard'
 import ShowDateCard from '@/components/cards/ShowDateCard'
 import PicCarousel from '@/components/shared/PicCarousel'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 
-export const getEventDetails = (slug:string) => {
 
-}
 
-const page = ({params}:{params:{slug:string}}) => {
+const page = ({params}:{params:{id:string}}) => {
+  console.log('params',params.id)
+  
+  
+     const getEventDetails = async(id:string) => {
+      console.log(id)
+      try {
+        const res = await fetchApi().get(`event/${id}`)
+        const data =  res.data.data
+        console.log(data)
+      } catch (error:any) {
+        console.log(error.message)
+      }
+    }
 
+    useEffect(()=>{
+      getEventDetails(params.id)
+    },[])
 
   return (
     <section className='flex flex-col items-center justify-center p-10 w-full min-h-screen' >
@@ -24,8 +41,8 @@ const page = ({params}:{params:{slug:string}}) => {
         />
         <div className=' w-2/3 flex flex-1 max-lg:flex-col items-center justify-between mt-10 gap-10'>
           <div className='flex-col items-start justify-center mr-10'>
-            <h1 className='text-center text-3xl font-bold'>{params.slug}</h1>
-            <p className='text-center text-gray-600'>An event by {params.slug}</p>
+            <h1 className='text-center text-3xl font-bold'>{params.id}</h1>
+            <p className='text-center text-gray-600'>An event by {params.id}</p>
           </div>
           <div className='flex items-end'>
             <BuyTicketCard 

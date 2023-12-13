@@ -26,7 +26,7 @@ const OrganizerList = (
   
   return (
     <>
-      <Card className='w-[500px] h-[173px] items-center justify-center bg-[#1E1D1D] ' key={id}>
+      <Card className='w-[500px] h-[173px] max-md:w-[350px] items-center justify-center bg-[#1E1D1D] '>
         <CardHeader className='flex-row justify-items-start gap-4 mt-2'>
           <Image 
             src={imageUrl}
@@ -36,12 +36,12 @@ const OrganizerList = (
             className='rounded-full object-cover bg-neutral-800 border border-orange-600'
           />
           <CardTitle className='py-5'>
-              {name}
+              {slug}
           </CardTitle>
          
         </CardHeader>
         <CardDescription className=' w-full'>
-          <Link href={`/organizer/${slug}`}>
+          <Link href={`/organizer/${id}`}>
             <Button className='w-full bg-orange-700' >View</Button>
           </Link>
         </CardDescription>

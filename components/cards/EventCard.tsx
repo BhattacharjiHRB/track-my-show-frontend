@@ -74,7 +74,7 @@ const EventCard = (
         </CardContent>
         <CardFooter className='flex flex-1 items-center justify-between'>
             <div className=' text-neutral-300 '>Starts@{price}</div>
-            <Link href={`/eventprofile/${slug}`}>
+            <Link href={`/eventprofile/${id}`}>
                 <Button variant={'secondary'} className='bg-orange-600 hover:bg-orange-700'>Buy Now</Button>
             </Link>
         </CardFooter>

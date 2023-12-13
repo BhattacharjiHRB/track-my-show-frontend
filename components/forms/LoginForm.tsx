@@ -47,11 +47,12 @@ const LoginForm = () => {
           }
 
           if(response.status === 401){
-            return (
-              <>
-                <h1 className='text-xl font-bold text-red-500 animate-bounce'>Incorrect Password</h1>
-              </>
-            )
+            if(response.data.data === 'Unauthorised'){
+              toast.error(response.data.data)
+              setError(true)
+              setLoading(false)
+            
+            }
           }
 
           
@@ -59,6 +60,8 @@ const LoginForm = () => {
       } catch (error) {
         setError(true)
         console.log('Error:', error)
+      }finally{
+        setLoading(false)
       }
      }
       
@@ -97,7 +100,7 @@ const LoginForm = () => {
           
         )}
       />
-
+      
       {error && <h1 className='text-red-500 font-bold text-center animate-bounce'>OOPS! Please Try Again</h1> }
       <Button type="submit" className='w-full mt-3'>
         {loading ? (

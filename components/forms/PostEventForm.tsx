@@ -22,12 +22,17 @@ const PostEventForm = () => {
     const form = useForm<z.infer<typeof postEventValidation>>({
         resolver: zodResolver(postEventValidation),
         defaultValues: {
+            cover:'',
+            imageUrl:'',
             eventName:'',
             organizerName:'',
             genres:'',
             location:'',
             date: new Date(),
             time:'',
+            about:'',
+            story: '',
+            
         }
     })
 
@@ -35,14 +40,19 @@ const PostEventForm = () => {
         try {
           setLoading(true)
             const response = await fetchApi().post('event',{
+                cover: value.imageUrl || "",
+                imageUrl: value.imageUrl || "",
                 eventName: value.eventName || "",
                 organizerName: value.organizerName || "",
                 genres: value.genres || "",
                 location: value.location || "",
                 date: value.date || "",
-                time: value.time || ""
+                time: value.time || "",
+                about : value.about || '',
+                story : value.story || '',
+                
             })
-            console.log('Posted Event',response.data.json())
+            console.log('Posted Event',response.data.data)
             setDate(response.data.date)
             
         } catch (error) {
@@ -97,14 +107,14 @@ const PostEventForm = () => {
         />
           <FormField
           control={form.control}
-          name="eventName"
+          name="story"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Event Description</FormLabel>
               <FormControl>
                 <Textarea 
                   rows={5}
-                  placeholder="Event Name" 
+                  placeholder="A story about the event" 
                   {...field} 
                 />
               </FormControl>
@@ -114,12 +124,12 @@ const PostEventForm = () => {
         />
           <FormField
           control={form.control}
-          name="organizerName"
+          name="cover"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Gallery Image</FormLabel>
               <FormControl>
-                <Input type='file' placeholder="organizer Name" {...field} />
+                <Input type='file' placeholder="Event Cover" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -127,7 +137,7 @@ const PostEventForm = () => {
         />
         <FormField
           control={form.control}
-          name="organizerName"
+          name="about"
           render={({ field }) => (
             <FormItem>
               <FormLabel>About</FormLabel>

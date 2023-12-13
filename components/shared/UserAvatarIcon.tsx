@@ -62,8 +62,8 @@ const UserAvatarIcon = () => {
                         </h6>
                     </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                        <h6 className='flex text-red-600' onClick={logOut}>
+                <DropdownMenuItem onClick={logOut}>
+                        <h6 className='flex text-red-600'>
                             <LogOut className='w-5 h-5 mr-2' />
                             <span>Logout</span>
                         </h6>

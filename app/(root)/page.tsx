@@ -23,7 +23,6 @@ interface eventProps{
 export default function page() {
 
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
   const [event, setEvent] = useState<eventProps[]>([])
 
   const loadEvent =  async () => {
@@ -33,14 +32,24 @@ export default function page() {
       const response = await fetchApi().get('event')
       console.log(response.data.data)
       setEvent(response.data.data)
-    } catch (error:any) {
-      setError(true)    
+
+      if(response.status === 404){
+        toast.error("404! Page Not Found")
+      
+      }
+      if(response.status === 500){
+        toast.error("Something Went Wrong")
+      
+      }
+   
+    } catch (error:any) {   
       console.log(`ERROR: ${error.message}`)
-      toast.error("Please Sign In")
+      toast.error("Something Went Wrong")
     }finally{
       setLoading(false)
     }
   }
+
 
   
  
@@ -50,7 +59,7 @@ export default function page() {
 
 
   if(loading) return <Loading />
-  if(error) return toast.error('someting went wrong try again')
+
 
   return (
     <main className="flex w-full min-h-screen flex-col items-center justify-evenly">
@@ -69,7 +78,7 @@ export default function page() {
       </div>
 
       <div className="grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 justify-evenly mt-14 gap-4">
-      {event ?event.map((ev:eventProps) => (
+      {event? event.map((ev:eventProps) => (
         <EventCard 
           id={ev.id} 
           slug={ev.slug} 

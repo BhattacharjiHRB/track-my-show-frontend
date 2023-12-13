@@ -4,6 +4,7 @@ import { fetchApi } from "@/app/api/axios";
 import OrganizerList from "@/components/cards/OrganizerList";
 import Loading from "@/components/shared/Loading";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 
 
@@ -24,7 +25,7 @@ export default function page() {
     async function getOrganizers() {
     
         try {
-            setLoading(true)
+          setLoading(true)
           const res = await fetchApi().get('organizer');
           const data = await res.data.data;
           console.log(data)
@@ -35,15 +36,16 @@ export default function page() {
         }finally{
             setLoading(false)
         }
-     
+        
+
      }
     useEffect(()=>{
         getOrganizers()
     },[])
 
     if(loading) return <Loading />
-    if(error) return <Loading />
-    
+    if(error) return toast.error('Error')
+   
   
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center">

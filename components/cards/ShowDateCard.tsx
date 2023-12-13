@@ -1,8 +1,8 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { Button } from '../ui/button'
-import Link from 'next/link'
+
 
 const ShowDateCard = () => {
   const weekDay = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']

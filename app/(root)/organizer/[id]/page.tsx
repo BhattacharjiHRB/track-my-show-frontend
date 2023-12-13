@@ -18,28 +18,28 @@ interface organizerEventProp{
 
 }
 
-const page = ({params}:{params:{slug:string}}) => {
-        console.log('params',params)
-
-        const [loading, setLoading] = useState(false)
-        const [error, setError] = useState(false)
-        
-        const [organizerEvent, setOrganizerEvent] = useState<organizerEventProp[]>([])
-
-        const getOrganizer = async(slug:string) => {
+const page = ({params}:{params:{id:string}}) => {
+  console.log('params',params)
+  
+  
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
+  const [organizerEvent, setOrganizerEvent] = useState<organizerEventProp[]>([])
+  
+    
+        const getOrganizer = async(id:string) => {
           try {
-            setLoading(true)
-              const response = await fetchApi().get(`organizer`+slug)
+              setLoading(true)
+              const response = await fetchApi().get(`organizer/${id}`)
               console.log(response.data.data)
           } catch (error:any) {
             console.log(error.response.data)
             setError(true)
-            setLoading(false)
           }finally{
-            setError(false)
+              setLoading(false)
+          
           }
         }
-
         const getData = async() =>{
           console.log("getevent")
             try {
@@ -56,12 +56,12 @@ const page = ({params}:{params:{slug:string}}) => {
         }
 
         useEffect(()=>{
-          const organizerInfo = getOrganizer(params.slug)
+         getOrganizer(params.id)
           getData()
         },[])
         
-        
-        console.log(organizerInfo)
+
+       
         
         if(loading) return <Loading />
         if(error) return toast.error('Something Went Wrong')
@@ -69,12 +69,12 @@ const page = ({params}:{params:{slug:string}}) => {
 
       return (
           <div className='flex flex-col items-center justify-center'> 
-                  <OrganizerProfile 
-                    id={organizerInfo.id} 
-                    imageUrl={organizerInfo.cover} 
-                    name={organizerInfo.name} 
-                    description={organizerInfo.about}                
-                  />
+               <OrganizerProfile 
+                  id={''} 
+                  imageUrl={''} 
+                  name={''} 
+                  description={''}                
+               />
 
             <h1 className='text-xl font-bold text-center'>Event organized by this Organizer </h1>
               <div className='grid grid-flow-row grid-cols-1 lg:grid-cols-2 md:grid-cols-4 sm:grid-cols-3 gap-4 mt-4 mb-4 w-full px-4 justify-center items-center  '>
