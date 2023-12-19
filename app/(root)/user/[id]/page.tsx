@@ -11,7 +11,11 @@ const page = ({params}:{params:{id:string}}) => {
   }
   return (
     <section className='min-h-screen w-full flex flex-col justify-center items-center gap-5'>
-      
+      {userInfo && (
+        <div className='w-full flex flex-col justify-center items-center gap-5'>
+
+        </div>
+      )}
     </section>
   )
 }

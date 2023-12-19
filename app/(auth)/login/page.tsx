@@ -30,7 +30,7 @@ const page = () => {
             />)}
           
         <h1 className='mt-5 font-bold text-3xl text-center'>Login</h1>
-        <p className='text-sm font-normal text-orange-700 dark:text-orange-300 mt-2'>Login here to purchase</p>
+        <p className='text-sm font-normal text-orange-700 dark:text-orange-300 mt-2'>Login here to Book Tickets</p>
         <div className='mt-10'>
             <LoginForm />
         </div>
@@ -42,7 +42,7 @@ const page = () => {
             <p className='text-md'> dont have account ?
                 <span className='text-orange-700'>
                     <Link href={'/sign-up'} className='hover:underline ml-2'> 
-                                Signup
+                            Signup
                     </Link>
                 </span>
             </p>

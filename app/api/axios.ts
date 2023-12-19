@@ -12,9 +12,6 @@ export const getTokenToLocalStorage = () =>{
     }else {
         return null;
     }
-    
-    // return localStorage.getItem('token');
-
 }
 
 

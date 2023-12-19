@@ -15,11 +15,17 @@ import { useEffect, useState } from "react"
 
 interface eventType {
   
+  id: string; 
+  name: string;
+  organizer_id: string;
+  location_id: string;
+  start_date: string;
+  end_date: string;
 }
 
   export default function EventList() {
 
-    const [showList, setShowList] = useState<any[]>([])
+    const [showList, setShowList] = useState<eventType[]>([])
 
     const getShowList = async() => {
         try {
@@ -54,7 +60,7 @@ interface eventType {
               <TableCell className="font-medium " >{show.name}</TableCell>
               <TableCell>{show.organizer_id}</TableCell>
               <TableCell>{show.location_id}</TableCell>
-              <TableCell>{show.stat_date}</TableCell>
+              <TableCell>{show.start_date}</TableCell>
               <TableCell>{show.end_date}</TableCell>
             </TableRow>
           ))}

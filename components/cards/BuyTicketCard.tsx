@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 import { Button } from '../ui/button'
 import { fetchApi } from '@/app/api/axios';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 interface props{
     id: string;
@@ -38,9 +39,11 @@ const BuyTicketCard = ({id, price}:props) => {
             </CardTitle>
         </CardHeader>
         <CardContent>
-                <Button variant={'default'} size={'lg'} className='bg-orange-600 w-full' onClick={buyTicket} >
+            <Link href={'/under'} >
+                <Button variant={'default'} size={'lg'} className='bg-orange-600 w-full'>
                     Buy Ticket
                 </Button>
+            </Link>
         </CardContent>
     </Card>
   )
