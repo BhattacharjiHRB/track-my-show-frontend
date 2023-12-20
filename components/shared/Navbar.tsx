@@ -160,7 +160,7 @@ const Navbar = () => {
                    )}
                           
                 </div>
-                    <ToggleTheme />
+                <ToggleTheme />
                 {/* <span className='hidden max-md:inline-block ml-2'>
                    {token && <UserAvatarIcon /> }
                 </span> */}

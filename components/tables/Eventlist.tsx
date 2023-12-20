@@ -44,11 +44,11 @@ interface eventType {
 
     return (
       <Table className="w-[900px]">
-        <TableCaption>A list of your recent Users.</TableCaption>
+        <TableCaption>A list of your recent Events.</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Name</TableHead>
-            <TableHead>Organizer</TableHead>
+            <TableHead className="w-[250px]">Name</TableHead>
+            <TableHead className="w-[250px] ">Organizer</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Location</TableHead>
             

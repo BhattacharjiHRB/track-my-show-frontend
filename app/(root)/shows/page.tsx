@@ -48,9 +48,9 @@ const page = () => {
     })
     console.log(show)
   return (
-   <section className='flex flex-col items-center justify-center p-5'>
+   <section className='flex flex-col min-h-screen items-center justify-center p-5'>
         <Image 
-            src={''}
+            src={'/assets/images/hero-big-image.svg'}
             alt='Banner Photo'
             width={1850}
             height={500}
@@ -59,14 +59,14 @@ const page = () => {
         
         <div className='flex flex-col w-full items-center justify-center mt-10 border-b border-x-neutral-800'>
             <div className='flex flex-col items-center w-full justify-evenly mb-5 gap-4'>
-                <h1 className='text-4xl font-bold text-justify'>Popular Category</h1>
+                <h1 className='text-4xl max-sm:text-xl font-bold text-justify'>Popular Category</h1>
                 <Link href={'/'}>
                     <Badge variant={'outline'} className=' outline-orange-600 mt-3'>
                         categories
                     </Badge>    
                 </Link>
             </div>
-                <h1 className='text-3xl font-bold text-justify'>Looking for something specific ?</h1>
+                <h1 className='text-3xl font-bold max-sm:text-lg text-justify'>Looking for something specific ?</h1>
             <div className='flex flex-1 max-md:flex-col items-center justify-center mt-5 mb-5 gap-5'>
                     <FindByDate />
                     {/* <FindByPlace /> */}
@@ -77,32 +77,43 @@ const page = () => {
             <div className='text-center text-orange-600 animate-pulse'>
                 Loading....
             </div>
-        )}*/}
-            {show.length === 0 ? (
-                <h1 className='text-xl text-center text-gray-600 font-bold mt-5'>
-                    No Show available
-                </h1>
-            ):(
-                <>
-                    {show.map((show)=>(
-                        <EventCard 
-                            id={show.id} 
-                            slug={show.slug} 
-                            imageUrl={show.cover} 
-                            eventName={show.name} 
-                            organizer={{
-                                slug:show.organizer_id,
-                                name:show.organizer_name,
-                            }} 
-                            genres={show.category} 
-                            location={show.location} 
-                            time={show.time} 
-                            price={show.price}            
-                        />
+        )} */}
 
-                    ))}
-                </>
-            )}
+                {show.length === 0 ? (
+
+                    <div>
+                        <Image 
+                            src={"/assets/images/empty-tmg.svg"} 
+                            alt={"no show"}
+                            width={175}
+                            height={50}
+                            className="mt-10"            
+                        />
+                        <h1 className='text-xl text-center text-gray-600 font-bold mt-5'>
+                            No Show available
+                        </h1>
+                    </div>
+                ):(
+                    <>
+                        {show.map((show)=>(
+                            <EventCard 
+                                id={show.id} 
+                                slug={show.slug} 
+                                imageUrl={show.cover} 
+                                eventName={show.name} 
+                                organizer={{
+                                    slug:show.organizer_id,
+                                    name:show.organizer_name,
+                                }} 
+                                genres={show.category} 
+                                location={show.location} 
+                                time={show.time} 
+                                price={show.price}            
+                            />
+
+                        ))}
+                    </>
+                )}
         </div>
    </section>
   )

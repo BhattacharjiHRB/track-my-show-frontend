@@ -44,7 +44,7 @@ interface userType {
         <TableCaption>A list of your recent Users.</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Name</TableHead>
+            <TableHead className="w-[300px]">Name</TableHead>
             <TableHead>Phone</TableHead>
             <TableHead>Email</TableHead>
             
@@ -63,7 +63,7 @@ interface userType {
         <TableFooter>
           <TableRow>
             <TableCell colSpan={5}>Total user</TableCell>
-            <TableCell className="text-right"> {userList.length} </TableCell>
+            <TableCell className=" text-right font-bold"> {userList.length} </TableCell>
           </TableRow>
         </TableFooter>
       </Table>
