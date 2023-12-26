@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
-import { KeyRound, LogIn, MenuIcon } from 'lucide-react'
+import { MenuIcon } from 'lucide-react'
 import { navRoutes } from '@/lib/constants'
 import { Button } from '../ui/button'
 import Link from 'next/link'
@@ -50,28 +50,45 @@ const Navbar = () => {
                         <div className='flex flex-col items-center justify-evenly mt-14 gap-5'>
             
                            <Searchbar />
+
                            {token ? (
                      
                      <UserAvatarIcon />
                  ) : (
-                  <><Link href={'/login'}>
+                  <>
+                        <Link href={'/sign-up'}>
+                        <Button
+                            className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
+                            variant={'ghost'}
+                        >
+                            <p className='flex flex-1 items-center justify-between'>
+                                FAQs
+                            </p>
+                        </Button>
+                    </Link>
+                    <Link href={'/sign-up'}>
+                        <Button
+                            className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
+                            variant={'ghost'}
+                        >
+                            <p className='flex flex-1 items-center justify-between'>
+                                Contacts
+                            </p>
+                        </Button>
+                    </Link>
+                  <Link href={'/login'}>
                   <Button className='bg-orange-600 text-sm'>
                       <p className='flex flex-1 items-center justify-between'>
-                          <span>
-                              <LogIn className='w-6 h-6 mr-2' />
-                          </span>
                           Login
                       </p>
                   </Button>
-              </Link><Link href={'/sign-up'}>
+              </Link>
+              <Link href={'/sign-up'}>
                       <Button
                           className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
                           variant={'ghost'}
                       >
                           <p className='flex flex-1 items-center justify-between'>
-                              <span>
-                                  <KeyRound className='w-6 h-6 mr-2' />
-                              </span>
                               Sign Up
                           </p>
                       </Button>
@@ -84,7 +101,7 @@ const Navbar = () => {
                 </Sheet>
             </div>
             {/* Navigattion left side tabs */}
-            <nav className='flex items-start justify-start space-x-4 lg:space-x-6 max-md:hidden mr-16'>
+            <nav className='flex items-start justify-start space-x-4 lg:space-x-6 max-md:hidden mr-10'>
                 {navRoutes.map((route)=>(
                     <Button 
                         asChild 
@@ -135,33 +152,52 @@ const Navbar = () => {
                      
                        <UserAvatarIcon />
                    ) : (
-                    <><Link href={'/login'}>
-                    <Button className='bg-orange-600 text-sm'>
-                        <p className='flex flex-1 items-center justify-between'>
-                            <span>
-                                <LogIn className='w-6 h-6 mr-2' />
-                            </span>
-                            Login
-                        </p>
-                    </Button>
-                </Link><Link href={'/sign-up'}>
+                    <>
+                      <Link href={'/sign-up'}>
                         <Button
                             className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
                             variant={'ghost'}
                         >
                             <p className='flex flex-1 items-center justify-between'>
-                                <span>
-                                    <KeyRound className='w-6 h-6 mr-2' />
-                                </span>
+                                FAQs
+                            </p>
+                        </Button>
+                    </Link>
+                    <Link href={'/sign-up'}>
+                        <Button
+                            className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
+                            variant={'ghost'}
+                        >
+                            <p className='flex flex-1 items-center justify-between'>
+                                Contacts
+                            </p>
+                        </Button>
+                    </Link>
+                    <Link href={'/sign-up'}>
+                        <Button
+                            className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
+                            variant={'ghost'}
+                        >
+                            <p className='flex flex-1 items-center justify-between'>
                                 Sign Up
                             </p>
                         </Button>
-                    </Link></>    
+                    </Link>
+                    <Link href={'/login'}>
+                        <Button className='bg-orange-600 text-sm'>
+                            <p className='flex flex-1 items-center justify-between'>
+                                Login
+                            </p>
+                        </Button>
+                    </Link>
+                  
+                
+                    </>    
                    )}
                           
                 </div>
-                <ToggleTheme />
-                {/* <span className='hidden max-md:inline-block ml-2'>
+                {/* <ToggleTheme />
+                <span className='hidden max-md:inline-block ml-2'>
                    {token && <UserAvatarIcon /> }
                 </span> */}
         </div>

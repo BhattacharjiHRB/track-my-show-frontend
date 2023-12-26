@@ -69,7 +69,7 @@ const page = () => {
                 <h1 className='text-3xl font-bold max-sm:text-lg text-justify'>Looking for something specific ?</h1>
             <div className='flex flex-1 max-md:flex-col items-center justify-center mt-5 mb-5 gap-5'>
                     <FindByDate />
-                    {/* <FindByPlace /> */}
+                    <FindByPlace />
             </div>
         </div> 
         <div className='grid grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1 justify-evenly mt-10 gap-5'>

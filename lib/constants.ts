@@ -5,10 +5,10 @@ export const navRoutes = [
     },
     {
         href: '/shows',
-        label:"Shows"
+        label:"Find Shows"
     },
     {
         href: '/about-us',
-        label:"About Us"
+        label:"About"
     }
 ]

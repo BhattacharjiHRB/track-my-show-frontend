@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { Button } from '../ui/button'
+import { UserPlus } from 'lucide-react';
 
 interface props{
     id:string;
@@ -27,7 +28,7 @@ const OrganizerProfile = (
               <h1 className='text-center font-bold text-2xl'>{name}</h1>
               <h3 className='text-center font-semibold text-xl'>About</h3>
               <p className='text-lg text-gray-500 text-justify'>{description}</p>
-              <Button variant={'secondary'} size={'lg'}>Follow+</Button>
+              <Button variant={'secondary'} size={'lg'} className='flex bg-orange-600'>Follow <span><UserPlus /></span></Button>
          </div>
          <div className='border-b border-gray-900'  />
       </div>
