@@ -22,9 +22,9 @@ const OrganizerProfile = (
               alt={'Cover Photo'}
               width={270}
               height={270}
-              className='rounded-full bg-neutral-800 mt-5'
+              className='rounded-full bg-neutral-800 border border-orange-600 mt-5'
          />
-         <div className='flex flex-col items-center justify-between'>
+         <div className='flex flex-col items-center justify-between mt-5'>
               <h1 className='text-center font-bold text-2xl'>{name}</h1>
               <h3 className='text-center font-semibold text-xl'>About</h3>
               <p className='text-lg text-gray-500 text-justify'>{description}</p>

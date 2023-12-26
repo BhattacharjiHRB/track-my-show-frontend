@@ -7,7 +7,6 @@ import { Button } from '../ui/button'
 import Link from 'next/link'
 import Image from 'next/image'
 import UserAvatarIcon from './UserAvatarIcon'
-import ToggleTheme from './ToggleTheme'
 import { useTheme } from 'next-themes'
 import Searchbar from './Searchbar'
 import { getTokenToLocalStorage } from '@/app/api/axios'
@@ -101,7 +100,7 @@ const Navbar = () => {
                 </Sheet>
             </div>
             {/* Navigattion left side tabs */}
-            <nav className='flex items-start justify-start space-x-4 lg:space-x-6 max-md:hidden mr-10'>
+            <nav className='flex items-start justify-start space-x-4 lg:space-x-6 max-md:hidden mr-16'>
                 {navRoutes.map((route)=>(
                     <Button 
                         asChild 
@@ -148,11 +147,7 @@ const Navbar = () => {
             <div className='flex items-center ml-16 gap-2 max-sm:hidden mr-10'>
                     
                    <Searchbar />
-                   {token ? (
-                     
-                       <UserAvatarIcon />
-                   ) : (
-                    <>
+                    
                       <Link href={'/sign-up'}>
                         <Button
                             className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
@@ -173,33 +168,33 @@ const Navbar = () => {
                             </p>
                         </Button>
                     </Link>
-                    <Link href={'/sign-up'}>
-                        <Button
-                            className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
-                            variant={'ghost'}
-                        >
-                            <p className='flex flex-1 items-center justify-between'>
-                                Sign Up
-                            </p>
-                        </Button>
-                    </Link>
-                    <Link href={'/login'}>
-                        <Button className='bg-orange-600 text-sm'>
-                            <p className='flex flex-1 items-center justify-between'>
-                                Login
-                            </p>
-                        </Button>
-                    </Link>
-                  
-                
-                    </>    
-                   )}
+                    {token ? (
+                        <UserAvatarIcon />
+                    ) : (
+                        <> 
+                        <Link href={'/sign-up'}>
+                            <Button
+                                className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
+                                variant={'ghost'}
+                            >
+                                <p className='flex flex-1 items-center justify-between'>
+                                    Sign Up
+                                </p>
+                            </Button>
+                        </Link>
+                        <Link href={'/login'}>
+                            <Button className='bg-orange-600 text-sm'>
+                                <p className='flex flex-1 items-center justify-between'>
+                                    Login
+                                </p>
+                            </Button>
+                        </Link>
+                        
+                        </>
+                    )}   
                           
-                </div>
-                {/* <ToggleTheme />
-                <span className='hidden max-md:inline-block ml-2'>
-                   {token && <UserAvatarIcon /> }
-                </span> */}
+               </div>
+
         </div>
     </header>
   )

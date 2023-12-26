@@ -6,6 +6,7 @@ import { Heart, LogOut, Settings, Smile, Ticket } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 const UserAvatarIcon = () => {
+    
     const router = useRouter()
 
     const logOut = () => {
@@ -30,7 +31,7 @@ const UserAvatarIcon = () => {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
                 <DropdownMenuItem>
-                    <Link href={'/user-profile'}>
+                    <Link href={`/user`}>
                         <h6 className='flex'>
                             <Ticket className='w-5 h-5 mr-2' />
                             <span>Tickets</span>
@@ -38,7 +39,7 @@ const UserAvatarIcon = () => {
                     </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                    <Link href={'/user-profile'}>
+                    <Link href={'/user'}>
                         <h6 className='flex'>
                             <Smile className='w-5 h-5 mr-2' />
                             <span>Interests</span>
@@ -47,7 +48,7 @@ const UserAvatarIcon = () => {
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                     
-                    <Link href={'/user-profile'}>
+                    <Link href={'/user'}>
                         <h6 className='flex'>
                             <Heart className='w-5 h-5 mr-2' />
                             <span>Wishlist</span>
@@ -55,7 +56,7 @@ const UserAvatarIcon = () => {
                     </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                    <Link href={'/user-profile'}>
+                    <Link href={'/user'}>
                         <h6 className='flex'>
                             <Settings className='w-5 h-5 mr-2' />
                             <span>Settings</span>

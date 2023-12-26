@@ -16,6 +16,7 @@ const LoginForm = () => {
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
+
   
   const router = useRouter() 
     
@@ -48,23 +49,23 @@ const LoginForm = () => {
 
           if(response.status === 401){
             if(response.data.data === 'Unauthorised'){
-              toast.error(response.data.data)
               setError(true)
               setLoading(false)
             
             }
           }
-
           
-          console.log(response.status, response.data.data.accessToken.token);
+          
       } catch (error) {
         setError(true)
-        console.log('Error:', error)
       }finally{
         setLoading(false)
       }
      }
-      
+
+
+
+
   return (
     <Form {...form}>
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -100,7 +101,6 @@ const LoginForm = () => {
           
         )}
       />
-      
       {error && <h1 className='text-red-500 font-bold text-center animate-bounce'>OOPS! Please Try Again</h1> }
       <Button type="submit" className='w-full mt-3'>
         {loading ? (

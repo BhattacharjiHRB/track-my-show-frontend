@@ -70,7 +70,7 @@ const page = ({params}:{params:{id:string}}) => {
               <div className="flex-col items-center text-justify">
                 <h1 className='text-3xl font-semibold max-md:text-xl '> About The Show</h1>
                 <ol>
-                  <li>{event.scheduled_at}</li>
+                  <li>{event.scheduled_at} </li>
                   <li>Duration hours</li>
                 </ol>
               </div>

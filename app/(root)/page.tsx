@@ -30,7 +30,6 @@ export default function page() {
  
 
   const loadEvent =  async () => {
-  
     try {
       setLoading(true)
       const response = await fetchApi().get('event')
@@ -42,7 +41,7 @@ export default function page() {
       
       }
       if(response.status === 500){
-        toast.error("Something Went Wrong")
+        toast.error("Please Check Your Internet")
       
       }
    

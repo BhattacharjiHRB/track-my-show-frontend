@@ -1,14 +1,16 @@
-import { fetchApi } from '@/app/api/axios'
-import { useRouter } from 'next/navigation'
+'use client'
+
 import React from 'react'
+import { useRouter } from 'next/navigation'
+import { fetchApi, getTokenToLocalStorage } from '@/app/api/axios'
+import UserProfile from '@/components/cards/UserProfile'
 import toast from 'react-hot-toast'
 
 const page = ({params}:{params:{id:string}}) => {
 
   const router = useRouter()
 
-  const userInfo = localStorage.getItem('token')
-
+  const userInfo = getTokenToLocalStorage()
 
 
   if(userInfo){
@@ -33,9 +35,24 @@ const page = ({params}:{params:{id:string}}) => {
   return (
     <section className='min-h-screen w-full flex flex-col justify-center items-center gap-5'>
       {userInfo && (
-        <div className='w-full flex flex-col justify-center items-center gap-5'>
+        <>
+          <div className='w-full flex flex-col justify-center items-center gap-5'>
+              <UserProfile 
+                id={params.id} 
+                imageUrl={'/asstes/images/error.svg'} 
+                name={'Hrittik Bhattacharjee'} 
+                location={'Dhaka, Bangladesh'} 
+                watchedShows={'15'} 
+                following={'30'}            
+                />
+          </div>
+          <div className=' w-full border-b border-neutral-800' />
 
-        </div>
+          {/* Ticket Buying History */}
+          <div className='p-96' />
+          
+
+        </>
       )}
     </section>
   )

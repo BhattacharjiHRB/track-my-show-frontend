@@ -1,4 +1,6 @@
-import React from 'react'
+'use state'
+
+import React, { useEffect, useState } from 'react'
 import {
     Dialog,
     DialogContent,
@@ -9,8 +11,18 @@ import {
 import { Input } from "@/components/ui/input"
 import { Button } from '../ui/button'
 import { Search } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 const Searchbar = () => {
+
+    const [text, setText] = useState('')
+
+    const router = useRouter()
+
+    useEffect(()=>{
+        // router.push(`/event?search=${text}`)
+    },[text, router])    
+
   return (
     <Dialog>
         <DialogTrigger>
@@ -28,7 +40,13 @@ const Searchbar = () => {
             </DialogHeader>
             <div className='items-center'>
                 <div className='mb-5'>
-                    <Input id="search" placeholder="Search..." className='outline-none' />
+                    <Input 
+                        id="search" 
+                        value={text}
+                        onChange={(e) => setText(e.target.value)} 
+                        placeholder="Search..." 
+                        className='outline-none' 
+                        />
                 </div>
                 <Button className='w-full'>
                     <Search className='w-6 h-6' /> 
