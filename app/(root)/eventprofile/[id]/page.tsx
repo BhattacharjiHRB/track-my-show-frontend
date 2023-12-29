@@ -3,9 +3,11 @@
 import { fetchApi } from '@/app/api/axios'
 import BuyTicketCard from '@/components/cards/BuyTicketCard'
 import ShowDateCard from '@/components/cards/ShowDateCard'
+import Loading from '@/components/shared/Loading'
 import PicCarousel from '@/components/shared/PicCarousel'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 interface eventProfileProps{
@@ -22,14 +24,16 @@ interface eventProfileProps{
 
 const page = ({params}:{params:{id:string}}) => {
 
-    const [eventDetails, setEventDetails] = useState<eventProfileProps[]>([])
+    const [event, setEvent] = useState<eventProfileProps | null>(null)
+
+    const router = useRouter()
 
      const getEventDetails = async(id:string) => {
       console.log(id)
       try {
         const res = await fetchApi().get(`event/${id}`)
         const data =  res.data.data
-        setEventDetails(data)
+        setEvent(data)
         console.log(data)
       } catch (error:any) {
         console.log(error.message)
@@ -40,10 +44,14 @@ const page = ({params}:{params:{id:string}}) => {
       getEventDetails(params.id)
     },[])
 
+    if(!event){
+      router.push('/404')
+    }
+
 
   return (
     <section className='flex flex-col items-center justify-center p-10 w-full min-h-screen' >
-        {eventDetails.map((event)=>(
+        {event ? (
           <>
           <Image
             src={`/${event.cover}`}
@@ -96,7 +104,9 @@ const page = ({params}:{params:{id:string}}) => {
             </div>
             </>
 
-          ))}
+          ):(
+            <Loading />
+          )}
       </section>
   )
 }

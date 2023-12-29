@@ -16,3 +16,7 @@ export const postEventValidation = z.object({
     
 })
 
+
+export const districtvalidation = z.object({
+    district:z.string()
+})
