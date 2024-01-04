@@ -5,11 +5,11 @@ import Link from 'next/link'
 import { Heart, LogOut, Settings, Smile, Ticket } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
-interface userProrp{
+interface userProp{
     id: string
 }
 
-const UserAvatarIcon = ({id}:userProrp) => {
+const UserAvatarIcon = ({id}:userProp) => {
     
     const router = useRouter()
 
@@ -27,7 +27,7 @@ const UserAvatarIcon = ({id}:userProrp) => {
         <DropdownMenuTrigger asChild>
                 <Avatar>
                     <AvatarImage src='' alt='userPic' />
-                    <AvatarFallback className='text-black'>UN</AvatarFallback>
+                    <AvatarFallback className='text-black'>TMS</AvatarFallback>
                 </Avatar>         
         </DropdownMenuTrigger>
         <DropdownMenuContent className='w-48 bg-neutral-950 text-zinc-50'>
@@ -62,7 +62,7 @@ const UserAvatarIcon = ({id}:userProrp) => {
                     </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                    <Link href={'/user'}>
+                    <Link href={'/user/account'}>
                         <h6 className='flex'>
                             <Settings className='w-5 h-5 mr-2' />
                             <span>Settings</span>

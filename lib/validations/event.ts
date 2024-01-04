@@ -20,3 +20,18 @@ export const postEventValidation = z.object({
 export const districtvalidation = z.object({
     district:z.string()
 })
+
+export const theaterValidation = z.object({
+    theater:z.string(),
+    vanue:z.string(),
+    seatCapacity:z.number(),
+    seatLayout:z.string(),
+})
+
+export const eventCatagoryValidation = z.object({
+    catagory:z.string()
+})
+
+export const venueFeatureValidation = z.object({
+    featureName:z.string(),
+})

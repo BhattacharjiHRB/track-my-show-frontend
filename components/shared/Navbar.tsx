@@ -11,6 +11,7 @@ import { useTheme } from 'next-themes'
 import Searchbar from './Searchbar'
 import { getTokenToLocalStorage } from '@/app/api/axios'
 import { usePathname } from 'next/navigation'
+import TmsLogo from '@/public/assets/logos/tms-logo.svg'
 
 const Navbar = () => {
     const {theme} = useTheme()
@@ -52,7 +53,7 @@ const Navbar = () => {
 
                            {token ? (
                      
-                     <UserAvatarIcon />
+                     <UserAvatarIcon id={''} />
                  ) : (
                   <>
                         <Link href={'/sign-up'}>
@@ -100,7 +101,7 @@ const Navbar = () => {
                 </Sheet>
             </div>
             {/* Navigattion left side tabs */}
-            <nav className='flex items-start justify-start space-x-4 lg:space-x-6 max-md:hidden mr-16'>
+            <nav className='inline-block items-start justify-start space-x-4 lg:space-x-6 max-md:hidden mr-10'>
                 {navRoutes.map((route)=>(
                     <Button 
                         asChild 
@@ -122,24 +123,25 @@ const Navbar = () => {
                     <Link 
                         href={'/'} 
                         key={'Home'} 
-                        className='px-10 ml-0 mr-20 md:ml-5 md:mr-5 sm:ml-10 sm:mr-10 '
+                        className='px-10 ml-0 mr-20 md:ml-5 md:mr-5 sm:ml-10 sm:mr-7 '
                         
                     >
-                        {isDark ? (<Image 
-                            src={'/assets/logos/tms-logo.svg'} 
+                       <Image 
+                            src={TmsLogo} 
                             alt={'logo'} 
                             width={65} 
                             height={65} 
                             className='object-contain' 
                             priority={true}
-                        />):(  <Image 
+                        /> 
+                        {/* <Image 
                             src={'/assets/logos/tms-logo-dark.svg'} 
                             alt={'logo'} 
                             width={65} 
                             height={65} 
                             className='object-contain' 
                             priority={true}
-                        />)}
+                        /> */}
                       
 
                     </Link>
@@ -169,7 +171,9 @@ const Navbar = () => {
                         </Button>
                     </Link>
                     {token ? (
-                        <UserAvatarIcon />
+                        <div className='ml-14'>
+                            <UserAvatarIcon id={''} />
+                        </div>
                     ) : (
                         <> 
                         <Link href={'/sign-up'}>

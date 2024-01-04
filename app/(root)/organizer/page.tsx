@@ -1,10 +1,10 @@
 'use client'
 
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { fetchApi } from "@/app/api/axios";
 import OrganizerList from "@/components/cards/OrganizerList";
 import Loading from "@/components/shared/Loading";
-import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 
 
 

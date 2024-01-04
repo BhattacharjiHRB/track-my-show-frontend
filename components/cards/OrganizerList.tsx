@@ -38,7 +38,6 @@ const OrganizerList = (
           <CardTitle className='py-5'>
               {slug}
           </CardTitle>
-         
         </CardHeader>
         <CardDescription className=' w-full'>
           <Link href={`/organizer/${id}`}>

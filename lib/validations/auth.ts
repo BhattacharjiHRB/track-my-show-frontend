@@ -40,6 +40,8 @@ export const passwordReset = z.object({
     newPassword: z.string().min(8, 'Minimum 8 characters').max(30, 'Maximum 20 characters'),
     confirmPassword: z.string().min(8, 'Minimum 8 characters').max(30, 'Maximum 20 characters'),
 
+}).refine((data) => data.password != data.newPassword, {
+    message: "Passwords do not match",
 })
 
 // Organizer form data validation

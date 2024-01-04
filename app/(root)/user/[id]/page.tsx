@@ -1,10 +1,10 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
+import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 import { fetchApi, getTokenToLocalStorage } from '@/app/api/axios'
 import UserProfile from '@/components/cards/UserProfile'
-import toast from 'react-hot-toast'
 
 const page = ({params}:{params:{id:string}}) => {
 
@@ -13,24 +13,20 @@ const page = ({params}:{params:{id:string}}) => {
   const userInfo = getTokenToLocalStorage()
 
 
-  if(userInfo){
-    (async()=>{
-      try {
+  const user = async(id:string)=>{
+    try {
 
-        const res = await fetchApi().get(`user/${params.id}`)
-        const data = res.data.data
-        console.log(data)
-        toast.success("You are logged in successfully")
-      } catch (error) {
-        console.log(error)
-      }
-    })()
-  }else{
-
-    toast.error("Please Login First")
-    router.push('/login')
-    
+      const res = await fetchApi().get(`user/${id}`)
+      const data = res.data.data
+      console.log(data)
+      toast.success("You are logged in successfully")
+    } catch (error) {
+      console.log(error)
+    }
   }
+useEffect(() =>{
+  user(params.id)
+},[userInfo])
 
   return (
     <section className='min-h-screen w-full flex flex-col justify-center items-center gap-5'>
@@ -39,8 +35,8 @@ const page = ({params}:{params:{id:string}}) => {
           <div className='w-full flex flex-col justify-center items-center gap-5'>
               <UserProfile 
                 id={params.id} 
-                imageUrl={'/asstes/images/error.svg'} 
-                name={'Hrittik Bhattacharjee'} 
+                imageUrl={'/assets/images/error.svg'} 
+                name={"Hrittik Bhattacharjee"} 
                 location={'Dhaka, Bangladesh'} 
                 watchedShows={'15'} 
                 following={'30'}            

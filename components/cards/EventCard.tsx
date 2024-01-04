@@ -40,18 +40,18 @@ const EventCard = (
 
 
 
+
   return (
-    <Card className='w-[350px] h-[550px] flex flex-col bg-[#1E1D1D] border-none' >
+    <Card className='w-[350px] h-[550px] flex flex-col bg-[#1E1D1D] border-none overflow-hidden mb-3' >
         <CardHeader>
             <Image 
                 src={imageUrl} 
                 alt='Event Photo' 
                 width={300} 
-                height={150}
-                priority = {true} 
-                className='object-cover' 
+                height={250}
+                className='object-cover bg-neutral-700 max-w-[300px] max-h-[250px]' 
             />
-            <CardTitle className='text-white font-bold'>
+            <CardTitle className='text-white font-bold mt-2'>
                 {eventName}
             </CardTitle>
             <CardDescription className='flex flex-1 gap-1'>
@@ -69,7 +69,7 @@ const EventCard = (
         <CardContent>
             <Separator className='my-2'/>
             <div className='text-neutral-300'> {location} </div>
-            <div className='text-neutral-300'> {time} </div>
+            <div className='text-neutral-300'>{time} </div>
             <Separator className='my-2'/>
         </CardContent>
         <CardFooter className='flex flex-1 items-center justify-between'>

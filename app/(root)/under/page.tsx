@@ -1,5 +1,6 @@
-import Image from 'next/image'
 import React from 'react'
+import Image from 'next/image'
+import under from '@/public/assets/images/um.svg'
 
 const page = () => {
   return (
@@ -7,7 +8,7 @@ const page = () => {
         
         <h1 className='text-center text-6xl font-bold text-orange-600 mb-10'>Sorry! </h1>
         <Image  
-            src={'/assets/images/um.svg'}
+            src={under}
             alt='Under maintenance'
             width={700}
             height={350}

@@ -107,9 +107,9 @@ const SignUpForm = () => {
           
         )}
       />
+      {error && <h1 className='text-red-500 font-bold text-center animate-bounce'>OOPS! Please Try Again</h1> }
 
       <Button type="submit" className='w-full mt-3'>
-      {error && <h1 className='text-red-500 font-bold text-center animate-bounce'>OOPS! Please Try Again</h1> }
           {loading ? (
             <>
                <ClipLoader

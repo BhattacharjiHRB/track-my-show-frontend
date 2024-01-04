@@ -1,10 +1,15 @@
 'use client'
 import { useEffect, useState } from "react"
-import { fetchApi, getTokenToLocalStorage } from "../api/axios"
 import toast from "react-hot-toast"
+import Link from "next/link";
+import Image from "next/image";
+import { fetchApi, getTokenToLocalStorage } from "../api/axios"
 import EventCard from "@/components/cards/EventCard";
 import Loading from "@/components/shared/Loading";
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
+import FindByPlace from "@/components/shared/FindByPlace";
+import heroImage from "@/public/assets/images/hero-image-1.svg"
  
 interface eventProps{
 
@@ -70,16 +75,40 @@ export default function page() {
           <div className="flex flex-col items-start justify-center ">
               <h1 className="text-6xl max-md:text-3xl font-extrabold text-justify bg-gradient-to-l from-amber-400 to-orange-600 bg-clip-text text-transparent"> Never miss your <br /> favorite Shows!</h1>
               <p className="text-xl max-sm:text-xs text-justify">Find the best shows across Dhaka City <br /> Book your seats now</p>
+              <Button 
+                size={'lg'} 
+                variant={'default'} 
+                className="mt-3">Find Trending Shows 
+                  <span>
+                    <ChevronRight className="h-6 w-6" /> 
+                  </span>
+              </Button>
           </div>
           <Image 
-            src={'/assets/images/hero-image-1.svg'}
+            src={heroImage}
             alt="Photo"
             width={700}
             height={500}
             className=" object-fill bg-neutral-800 rounded-xl shadow-xl shadow-orange-800"
           />
       </div>
-      <h1 className="text-3xl font-bold mt-10 ">Trending Shows</h1>
+      <div className=" w-2/3 flex items-center justify-between mt-5 ">
+        <div className="flex items-center justify-between gap-5">
+        <h1 className="text-3xl font-bold">Trending Shows</h1>
+        <FindByPlace />
+        </div>
+        <Link href={'/shows'}>
+        <Button 
+          size={'default'} 
+          variant={'outline'} 
+          className=" items-end outline-orange-600 text-orange-600">
+            View All Shows
+            <span>
+                    <ChevronRight className="h-5 w-5" /> 
+            </span>
+          </Button>
+          </Link>
+      </div>
       {notLoggedIn ? (
         <div className="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 justify-evenly mt-14 gap-4">
         {event? event.map((ev) => (
@@ -125,7 +154,23 @@ export default function page() {
           </div>
       )}
 
-    <h1 className="text-3xl font-bold ">Upcoming Shows</h1>
+<div className=" w-2/3 flex items-center justify-between mt-8 ">
+        <div className="flex items-center justify-between gap-5">
+        <h1 className="text-3xl font-bold">Upcoming Shows</h1>
+        <FindByPlace />
+        </div>
+        <Link href={'/shows'}>
+        <Button 
+          size={'default'} 
+          variant={'outline'} 
+          className=" items-end outline-orange-600 text-orange-600">
+            View All Shows
+            <span>
+                    <ChevronRight className="h-5 w-5" /> 
+            </span>
+          </Button>
+          </Link>
+      </div>
     {notLoggedIn ? (
         <div className="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 justify-evenly mt-14 gap-4">
         {event? event.map((ev) => (

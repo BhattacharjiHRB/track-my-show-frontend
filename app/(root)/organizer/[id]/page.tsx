@@ -1,10 +1,10 @@
 'use client'
+import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast';
 import { fetchApi } from '@/app/api/axios';
 import ShowCard from '@/components/cards/EventByOrganizerCard';
 import OrganizerProfile from '@/components/cards/OrganizerProfile';
 import Loading from '@/components/shared/Loading';
-import React, { useEffect, useState } from 'react'
-import toast from 'react-hot-toast';
 
 interface organizerEventProp{
   id: string; 
@@ -57,7 +57,7 @@ const page = ({params}:{params:{id:string}}) => {
 
         useEffect(()=>{
          getOrganizer(params.id)
-          getData()
+          // getData()
         },[])
         
 
@@ -72,10 +72,10 @@ const page = ({params}:{params:{id:string}}) => {
                <OrganizerProfile 
                   id={''} 
                   imageUrl={''} 
-                  name={''} 
-                  description={''}                
+                  name={'Tarua'} 
+                  description={'Something so long and good about the drama organization team name Tarua. we were astonished by watching adam surat that was organized by Tarua. and we loved that '}                
                />
-
+            <div className='w-full h-[1px] bg-gray-800 my-4' />
             <h1 className='text-xl font-bold text-center'>Event organized by this Organizer </h1>
               <div className='grid grid-flow-row grid-cols-1 lg:grid-cols-2 md:grid-cols-4 sm:grid-cols-3 gap-4 mt-4 mb-4 w-full px-4 justify-center items-center  '>
                 {organizerEvent && organizerEvent.length === 0 ? 

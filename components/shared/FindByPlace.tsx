@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '../ui/select'
 import { fetchApi } from '@/app/api/axios'
+import { MapPin } from 'lucide-react';
 
 
 interface districtType{
@@ -8,15 +9,19 @@ interface districtType{
   name: string;
 }
 
-const FindByPlace = async() => {
+const FindByPlace = () => {
   const [district, setDistrict] = useState<districtType[]>([])
-  try {
-    const result = await fetchApi().get('district')
-    const data = result.data
-    console.log(data)
-    setDistrict(data)
-  } catch (error) {
-    console.log(error)
+  
+  const showDistrict = async() =>{
+    try {
+      const result = await fetchApi().get('district')
+      const data = result.data.data
+      console.log(data)
+      setDistrict(data)
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
   return (
@@ -26,7 +31,7 @@ const FindByPlace = async() => {
     </SelectTrigger>
     <SelectContent>
       <SelectGroup>
-        <SelectLabel>District</SelectLabel>
+        <SelectLabel className='flex gap-2'>District <span> <MapPin className='h-5 w-5' /> </span> </SelectLabel>
         {district.map((dis) =>(
             <SelectItem value={dis.name} key={dis.id} >{dis.name}</SelectItem>
         ))}

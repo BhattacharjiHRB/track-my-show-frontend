@@ -6,17 +6,19 @@ import { Input } from '@/components/ui/input'
 import { postEventValidation } from '@/lib/validations/event'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Calendar } from '@/components/ui/calendar'
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import ClipLoader from 'react-spinners/ClipLoader'
 import { z } from 'zod'
 import { Textarea } from '../ui/textarea'
+import { isBase64Image } from '@/lib/utils'
 
 const PostEventForm = () => {
 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
     const [date, setDate] = useState<Date | undefined >(new Date())
+    const [files, setFiles] = useState<File[]>([])
     
 
     const form = useForm<z.infer<typeof postEventValidation>>({
@@ -36,11 +38,41 @@ const PostEventForm = () => {
         }
     })
 
+    const handleImage = (
+      e: ChangeEvent<HTMLInputElement>,
+      fieldChange: (value: string) => void
+    ) =>{
+       e.preventDefault()
+       
+       const fileReader = new FileReader()
+
+       if(e.target.files && e.target.files.length > 0){
+
+          const file = e.target.files[0]
+          setFiles(Array.from(e.target.files))
+
+          if(!file.type.includes('image')) return null;
+
+          fileReader.onload = async(event) =>{
+
+            const imageDataUrl = event.target?.result?.toString() || '';
+            fieldChange(imageDataUrl)
+          }
+          fileReader.readAsDataURL(file)
+       }
+
+    }
+
     const onSubmit = async(value: z.infer<typeof postEventValidation>) => {
+
+        const blob = value.imageUrl;
+
+        const imageChange = isBase64Image(blob)
+
         try {
           setLoading(true)
             const response = await fetchApi().post('event',{
-                cover: value.imageUrl || "",
+                cover: value.cover || "",
                 imageUrl: value.imageUrl || "",
                 eventName: value.eventName || "",
                 organizerName: value.organizerName || "",
@@ -53,7 +85,7 @@ const PostEventForm = () => {
                 
             })
             console.log('Posted Event',response.data.data)
-            setDate(response.data.date)
+            setDate(response.data.data)
             
         } catch (error) {
             console.log("Error:", error)
@@ -68,7 +100,7 @@ const PostEventForm = () => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
-          name="imageUrl"
+          name="cover"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Image</FormLabel>
@@ -124,7 +156,7 @@ const PostEventForm = () => {
         />
           <FormField
           control={form.control}
-          name="cover"
+          name="imageUrl"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Gallery Image</FormLabel>

@@ -1,14 +1,14 @@
 'use client'
 
+import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { fetchApi } from '@/app/api/axios'
 import BuyTicketCard from '@/components/cards/BuyTicketCard'
 import ShowDateCard from '@/components/cards/ShowDateCard'
 import Loading from '@/components/shared/Loading'
 import PicCarousel from '@/components/shared/PicCarousel'
 import { Button } from '@/components/ui/button'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
 
 interface eventProfileProps{
   name:string;
@@ -44,9 +44,9 @@ const page = ({params}:{params:{id:string}}) => {
       getEventDetails(params.id)
     },[])
 
-    if(!event){
-      router.push('/404')
-    }
+    // if(!event){
+    //   router.push('/404')
+    // }
 
 
   return (

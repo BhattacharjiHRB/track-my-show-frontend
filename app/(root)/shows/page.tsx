@@ -1,13 +1,13 @@
 'use client'
 import React, {  useEffect, useState } from 'react'
 import Image from 'next/image'
-import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
+import { fetchApi } from '@/app/api/axios'
+import { Badge } from '@/components/ui/badge'
 import FindByDate from '@/components/shared/FindByDate'
 import FindByPlace from '@/components/shared/FindByPlace'
 import EventCard from '@/components/cards/EventCard'
-import { fetchApi } from '@/app/api/axios'
-
+import bigHeroImage from '@/public/assets/images/hero-big-image.svg'
 
 
 interface showProps{
@@ -28,7 +28,9 @@ const page = () => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
 
+
     const fetchShow = async() => {
+
         try {
             setLoading(true)
             const response = await fetchApi().get('event')
@@ -46,11 +48,11 @@ const page = () => {
     useEffect(()=>{
         fetchShow()
     })
-    console.log(show)
+ 
   return (
    <section className='flex flex-col min-h-screen items-center justify-center p-5'>
         <Image 
-            src={'/assets/images/hero-big-image.svg'}
+            src={bigHeroImage}
             alt='Banner Photo'
             width={1850}
             height={500}

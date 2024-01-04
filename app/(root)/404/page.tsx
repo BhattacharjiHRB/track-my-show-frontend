@@ -1,7 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import errorImage from '@/public/assets/images/error.svg'
 
 const page = () => {
   return (
@@ -16,7 +17,7 @@ const page = () => {
   
 
     <Image  
-        src={'/assets/images/error.svg'}
+        src={errorImage}
         alt='Under maintenance'
         width={700}
         height={350}
