@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '../ui/select'
 import { fetchApi } from '@/app/api/axios'

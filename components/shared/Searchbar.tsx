@@ -34,7 +34,7 @@ const Searchbar = () => {
                             <span className='sr-only'>Search</span>
                     </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className='max-sm:w-[370px] '>
             <DialogHeader>
                 <DialogTitle>Search Event</DialogTitle>
             </DialogHeader>

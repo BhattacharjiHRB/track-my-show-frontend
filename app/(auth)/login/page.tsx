@@ -5,12 +5,9 @@ import LoginForm from '@/components/forms/LoginForm'
 import { Button } from '@/components/ui/button'
 import TmsLogo from '@/public/assets/logos/tms-logo.svg'
 import Link from 'next/link'
-import { useTheme } from 'next-themes'
 
-const page = () => {
-    const {theme} = useTheme()
-    const isDark = theme === 'dark'
-
+function page() {
+  
     
   return (
     <div>

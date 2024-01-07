@@ -1,7 +1,7 @@
 import CreateOrganizer from '@/components/forms/CreateOrganizer'
 import React from 'react'
 
-const page = () => {
+function page(){
   return (
     <div>
       <CreateOrganizer />

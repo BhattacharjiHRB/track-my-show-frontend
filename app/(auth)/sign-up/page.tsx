@@ -3,11 +3,10 @@ import React from 'react'
 import Image from 'next/image'
 import SignUpForm from '@/components/forms/SignUpForm'
 import TmsLogo from '@/public/assets/logos/tms-logo.svg'
-import { useTheme } from 'next-themes'
 
-const page = () => {
-  const {theme} = useTheme()
-    const isDark = theme === 'dark'
+
+function page() {
+
   return (
     <div className='min-h-screen flex flex-col items-center justify-center'>
       <div className='w-[350px] h-[430px] bg-orange-500/20 dark:bg-[#1E1D1D] sm:w-[630px] sm:h-[630px] items-center justify-center flex flex-col rounded-lg'>

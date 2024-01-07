@@ -1,7 +1,7 @@
 import PostEventForm from '@/components/forms/PostEventForm'
 
 
-const page = () => {
+function page() {
 
   return (
     <div className='max-h-screen '>

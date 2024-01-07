@@ -17,8 +17,7 @@ interface organizerEventProp{
   scheduled_at: string; 
 
 }
-
-const page = ({params}:{params:{id:string}}) => {
+function page ({params}:{params:{id:string}}) {
   console.log('params',params)
   
   
@@ -84,6 +83,7 @@ const page = ({params}:{params:{id:string}}) => {
                   <>
                       {organizerEvent.map((orgEv)=>(
                           <ShowCard 
+                              key={orgEv.id}
                               id={orgEv.id} 
                               slug={orgEv.slug} 
                               imageUrl={orgEv.cover} 

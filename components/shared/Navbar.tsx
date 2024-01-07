@@ -53,46 +53,46 @@ const Navbar = () => {
 
                            {token ? (
                      
-                     <UserAvatarIcon id={''} />
-                 ) : (
-                  <>
-                        <Link href={'/sign-up'}>
-                        <Button
-                            className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
-                            variant={'ghost'}
-                        >
+                        <UserAvatarIcon id={''} />
+                    ) : (
+                        <>
+                                <Link href={'/sign-up'}>
+                                <Button
+                                    className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
+                                    variant={'ghost'}
+                                >
+                                    <p className='flex flex-1 items-center justify-between'>
+                                        FAQs
+                                    </p>
+                                </Button>
+                            </Link>
+                            <Link href={'/sign-up'}>
+                                <Button
+                                    className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
+                                    variant={'ghost'}
+                                >
+                                    <p className='flex flex-1 items-center justify-between'>
+                                        Contacts
+                                    </p>
+                                </Button>
+                            </Link>
+                        <Link href={'/login'}>
+                        <Button className='bg-orange-600 text-sm'>
                             <p className='flex flex-1 items-center justify-between'>
-                                FAQs
+                                Login
                             </p>
                         </Button>
                     </Link>
                     <Link href={'/sign-up'}>
-                        <Button
-                            className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
-                            variant={'ghost'}
-                        >
-                            <p className='flex flex-1 items-center justify-between'>
-                                Contacts
-                            </p>
-                        </Button>
-                    </Link>
-                  <Link href={'/login'}>
-                  <Button className='bg-orange-600 text-sm'>
-                      <p className='flex flex-1 items-center justify-between'>
-                          Login
-                      </p>
-                  </Button>
-              </Link>
-              <Link href={'/sign-up'}>
-                      <Button
-                          className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
-                          variant={'ghost'}
-                      >
-                          <p className='flex flex-1 items-center justify-between'>
-                              Sign Up
-                          </p>
-                      </Button>
-                  </Link></>    
+                            <Button
+                                className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
+                                variant={'ghost'}
+                            >
+                                <p className='flex flex-1 items-center justify-between'>
+                                    Sign Up
+                                </p>
+                            </Button>
+                        </Link></>    
                  )}
                         
                                 

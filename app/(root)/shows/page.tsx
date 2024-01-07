@@ -8,6 +8,7 @@ import FindByDate from '@/components/shared/FindByDate'
 import FindByPlace from '@/components/shared/FindByPlace'
 import EventCard from '@/components/cards/EventCard'
 import bigHeroImage from '@/public/assets/images/hero-big-image.svg'
+import { useRouter } from 'next/navigation'
 
 
 interface showProps{
@@ -23,11 +24,12 @@ interface showProps{
     price:string;
 }
 
-const page = () => {
+function page() {
     const [show, setShow] = useState<showProps[]>([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
 
+    const router = useRouter()
 
     const fetchShow = async() => {
 
@@ -48,6 +50,10 @@ const page = () => {
     useEffect(()=>{
         fetchShow()
     })
+
+    if(error){
+        router.push('/404')
+    }
  
   return (
    <section className='flex flex-col min-h-screen items-center justify-center p-5'>
@@ -75,11 +81,12 @@ const page = () => {
             </div>
         </div> 
         <div className='grid grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1 justify-evenly mt-10 gap-5'>
-        {/* {loading && (
+        {loading && (
             <div className='text-center text-orange-600 animate-pulse'>
                 Loading....
             </div>
-        )} */}
+        )}
+        
 
                 {show.length === 0 ? (
 

@@ -6,11 +6,11 @@ import { useRouter } from 'next/navigation'
 import { fetchApi, getTokenToLocalStorage } from '@/app/api/axios'
 import UserProfile from '@/components/cards/UserProfile'
 
-const page = ({params}:{params:{id:string}}) => {
+function page ({params}:{params:{id:string}}){
 
-  const router = useRouter()
 
   const userInfo = getTokenToLocalStorage()
+  const router = useRouter()
 
 
   const user = async(id:string)=>{
@@ -22,11 +22,12 @@ const page = ({params}:{params:{id:string}}) => {
       toast.success("You are logged in successfully")
     } catch (error) {
       console.log(error)
+      router.push('/login')
     }
   }
 useEffect(() =>{
   user(params.id)
-},[userInfo])
+},[])
 
   return (
     <section className='min-h-screen w-full flex flex-col justify-center items-center gap-5'>

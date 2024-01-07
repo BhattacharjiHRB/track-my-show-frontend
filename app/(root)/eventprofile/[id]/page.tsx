@@ -21,8 +21,7 @@ interface eventProfileProps{
   category_id:string;
   scheduled_at: string;
 }
-
-const page = ({params}:{params:{id:string}}) => {
+function page({params}:{params:{id:string}}) {
 
     const [event, setEvent] = useState<eventProfileProps | null>(null)
 
@@ -44,9 +43,9 @@ const page = ({params}:{params:{id:string}}) => {
       getEventDetails(params.id)
     },[])
 
-    // if(!event){
-    //   router.push('/404')
-    // }
+    if(!event){
+      router.push('/under')
+    }
 
 
   return (

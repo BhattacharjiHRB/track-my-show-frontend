@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import FindByPlace from "@/components/shared/FindByPlace";
 import heroImage from "@/public/assets/images/hero-image-1.svg"
+import getEvent from "@/lib/DataFetch/getEvent";
+import { useRouter } from "next/navigation";
  
 interface eventProps{
 
@@ -25,11 +27,16 @@ interface eventProps{
     ticket_price:string;
 }
 
-export default function page() {
+function page() {
 
   const [loading, setLoading] = useState(false)
+  const [error , setError] = useState(false)
   const [event, setEvent] = useState<eventProps[]>([])
+
+
   const notLoggedIn =  getTokenToLocalStorage()
+  const router = useRouter()
+
 
 
  
@@ -42,12 +49,16 @@ export default function page() {
       setEvent(response.data.data)
 
       if(response.status === 404){
-        toast.error("404! Page Not Found")
+          router.push('/404')
       
       }
       if(response.status === 500){
         toast.error("Please Check Your Internet")
       
+      }
+
+      if(response.status === 401){
+        toast.error('Please Log In')
       }
    
     } catch (error:any) {   
@@ -66,7 +77,7 @@ export default function page() {
   },[])
 
 
-  if(loading) return <Loading />
+if(loading) return <Loading />
 
 
   return (
@@ -111,8 +122,9 @@ export default function page() {
       </div>
       {notLoggedIn ? (
         <div className="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 justify-evenly mt-14 gap-4">
-        {event? event.map((ev) => (
+        {event? event.map((ev:eventProps) => (
           <EventCard 
+            key={ev.id}
             id={ev.id} 
             slug={ev.slug} 
             imageUrl={ev.cover} 
@@ -173,7 +185,7 @@ export default function page() {
       </div>
     {notLoggedIn ? (
         <div className="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 justify-evenly mt-14 gap-4">
-        {event? event.map((ev) => (
+        {event? event.map((ev:eventProps) => (
           <EventCard 
             id={ev.id} 
             slug={ev.slug} 
@@ -220,3 +232,5 @@ export default function page() {
     </main>
   )
 }
+
+export default page;

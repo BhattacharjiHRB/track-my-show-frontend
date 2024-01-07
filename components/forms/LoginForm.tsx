@@ -10,7 +10,6 @@ import { Input } from '../ui/input'
 import { authApi } from '@/app/api/axios'
 import ClipLoader from 'react-spinners/ClipLoader'
 import { useRouter } from 'next/navigation'
-import toast from 'react-hot-toast'
 
 const LoginForm = () => {
 
