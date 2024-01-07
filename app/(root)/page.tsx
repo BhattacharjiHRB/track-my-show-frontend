@@ -103,8 +103,8 @@ if(loading) return <Loading />
             className=" object-fill bg-neutral-800 rounded-xl shadow-xl shadow-orange-800"
           />
       </div>
-      <div className=" w-2/3 flex items-center justify-between mt-5 ">
-        <div className="flex items-center justify-between gap-5">
+      <div className=" w-2/3 flex  items-center justify-between mt-5 ">
+        <div className=" flex  items-center justify-between gap-5">
         <h1 className="text-3xl font-bold">Trending Shows</h1>
         <FindByPlace />
         </div>
@@ -122,7 +122,7 @@ if(loading) return <Loading />
       </div>
       {notLoggedIn ? (
         <div className="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 justify-evenly mt-14 gap-4">
-        {event? event.map((ev:eventProps) => (
+        {event? event.map((ev) => (
           <EventCard 
             key={ev.id}
             id={ev.id} 
@@ -166,7 +166,7 @@ if(loading) return <Loading />
           </div>
       )}
 
-<div className=" w-2/3 flex items-center justify-between mt-8 ">
+<div className="w-2/3 flex items-center justify-between mt-8  ">
         <div className="flex items-center justify-between gap-5">
         <h1 className="text-3xl font-bold">Upcoming Shows</h1>
         <FindByPlace />
@@ -185,7 +185,7 @@ if(loading) return <Loading />
       </div>
     {notLoggedIn ? (
         <div className="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 justify-evenly mt-14 gap-4">
-        {event? event.map((ev:eventProps) => (
+        {event? event.map((ev) => (
           <EventCard 
             id={ev.id} 
             slug={ev.slug} 

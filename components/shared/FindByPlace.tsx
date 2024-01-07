@@ -25,6 +25,8 @@ const FindByPlace = () => {
 
   }
 
+  console.log(showDistrict)
+
   return (
     <Select>
     <SelectTrigger className="w-[200px]">
@@ -36,10 +38,7 @@ const FindByPlace = () => {
         {district.map((dis) =>(
             <SelectItem value={dis.name} key={dis.id} >{dis.name}</SelectItem>
         ))}
-        {/* <SelectItem value="banana">Banana</SelectItem>
-        <SelectItem value="blueberry">Blueberry</SelectItem>
-        <SelectItem value="grapes">Grapes</SelectItem>
-        <SelectItem value="pineapple">Pineapple</SelectItem> */}
+       
       </SelectGroup>
     </SelectContent>
   </Select>

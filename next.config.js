@@ -2,7 +2,13 @@
 const nextConfig = {
 
     images: {
-        domains: ['express-bf4s.onrender.com'],
+        remotePatterns:[
+          {
+            protocol: 'https',
+            hostname: 'express-bf4s.onrender.com',
+            pathname: '**'
+          }
+        ]
       },
 }
 

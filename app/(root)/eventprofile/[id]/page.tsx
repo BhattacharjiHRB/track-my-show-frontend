@@ -14,6 +14,7 @@ interface eventProfileProps{
   name:string;
   cover:string;
   slug:string;
+  about:string;
   organizer_id:string;
   story:string;
   ticket_price:string;
@@ -21,11 +22,12 @@ interface eventProfileProps{
   category_id:string;
   scheduled_at: string;
 }
+
+
 function page({params}:{params:{id:string}}) {
 
     const [event, setEvent] = useState<eventProfileProps | null>(null)
 
-    const router = useRouter()
 
      const getEventDetails = async(id:string) => {
       console.log(id)
@@ -43,9 +45,7 @@ function page({params}:{params:{id:string}}) {
       getEventDetails(params.id)
     },[])
 
-    if(!event){
-      router.push('/under')
-    }
+
 
 
   return (
@@ -53,12 +53,13 @@ function page({params}:{params:{id:string}}) {
         {event ? (
           <>
           <Image
-            src={`/${event.cover}`}
+            src={event.cover}
             alt='Event Photo'
-            width={1200}
+            width={1250}
             height={400}
-            priority={true}
-            className=' object-fill bg-neutral-800 mt-5 mb-10 rounded-lg' /><div className=' w-2/3 flex flex-1 max-lg:flex-col items-center justify-between mt-10 gap-10'>
+            className=' object-fill bg-neutral-800 mt-5 mb-10 rounded-lg' 
+          />
+            <div className=' w-2/3 flex flex-1 max-lg:flex-col items-center justify-between mt-10 gap-10'>
               <div className='flex-col items-start justify-center mr-10'>
                 <h1 className='text-center text-3xl font-bold'>{event.name}</h1>
                 <p className='text-center text-gray-600'>An event by {event.organizer_id}</p>
@@ -73,16 +74,17 @@ function page({params}:{params:{id:string}}) {
               <ShowDateCard 
                 schedule={event.scheduled_at} 
               />
-            </div><div className=' w-2/3 border border-neutral-800 mb-10' /><div className='flex flex-1 w-2/3 max-lg:flex-col gap-5 items-center justify-evenly'>
-              <div className="flex-col items-center text-justify">
+            </div>
+            <div className=' w-2/3 border border-neutral-800 mb-10' />
+            <div className='flex flex-1 w-2/3 max-lg:flex-col gap-5 items-center justify-evenly'>
+              <div className="flex-col w-1/2 items-center text-justify">
                 <h1 className='text-3xl font-semibold max-md:text-xl '> About The Show</h1>
-                <ol>
-                  <li>{event.scheduled_at} </li>
-                  <li>Duration hours</li>
+                <ol className='mt-5'>
+                  <li className='text-gray-500' >Show Duration: {event.about} </li>
                 </ol>
               </div>
-              <div className="flex-col items-center text-justify">
-                <h1 className='text-3xl font-semibold '>Story</h1>
+              <div className="flex-col w-1/2 items-center text-justify">
+                <h1 className='text-3xl font-semibold mb-5 '>Story</h1>
                 <p className='text-lg text-gray-500 text-justify'> {event.story} </p>
               </div>
             </div><div className=' w-2/3 max-md:w-full items-center m-5'>

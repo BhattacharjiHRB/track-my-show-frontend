@@ -81,11 +81,11 @@ function page() {
             </div>
         </div> 
         <div className='grid grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1 justify-evenly mt-10 gap-5'>
-        {loading && (
+        {/* {loading && (
             <div className='text-center text-orange-600 animate-pulse'>
                 Loading....
             </div>
-        )}
+        )} */}
         
 
                 {show.length === 0 ? (

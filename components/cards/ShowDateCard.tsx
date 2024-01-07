@@ -18,7 +18,7 @@ const ShowDateCard = (
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   const now = new Date()
   
-  const [dateString, timeString] = schedule.split(' ')
+  const [dateString, timeString] = schedule.split('T')
 
   return (
     <Card className='w-[156px] h-[156px] border-none bg-[#1E1D1D] text-zinc-50'>
@@ -27,7 +27,7 @@ const ShowDateCard = (
                 {dateString}
             </CardTitle>
             <CardDescription className='text-gray-400'>
-                {dateString[now.getDay()]}
+                {dateString}
             </CardDescription>
         </CardHeader>
         <CardContent className=' overflow-hidden'>
