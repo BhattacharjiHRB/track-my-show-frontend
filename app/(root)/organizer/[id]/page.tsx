@@ -17,6 +17,7 @@ interface organizerEventProp{
   scheduled_at: string; 
 
 }
+
 function page ({params}:{params:{id:string}}) {
   console.log('params',params)
   
@@ -69,7 +70,7 @@ function page ({params}:{params:{id:string}}) {
       return (
           <div className='flex flex-col items-center justify-center'> 
                <OrganizerProfile 
-                  id={''} 
+                  id={'1'} 
                   imageUrl={''} 
                   name={'Tarua'} 
                   description={'Something so long and good about the drama organization team name Tarua. we were astonished by watching adam surat that was organized by Tarua. and we loved that '}                
@@ -77,7 +78,7 @@ function page ({params}:{params:{id:string}}) {
             <div className='w-full h-[1px] bg-gray-800 my-4' />
             <h1 className='text-xl font-bold text-center'>Event organized by this Organizer </h1>
               <div className='grid grid-flow-row grid-cols-1 lg:grid-cols-2 md:grid-cols-4 sm:grid-cols-3 gap-4 mt-4 mb-4 w-full px-4 justify-center items-center  '>
-                {organizerEvent && organizerEvent.length === 0 ? 
+                {!!organizerEvent && organizerEvent.length === 0 ? 
                 <h1 className='text-gray-500 text-center text-xl font-bold'>No Events Found</h1> 
                 : (
                   <>

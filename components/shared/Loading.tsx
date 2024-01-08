@@ -1,19 +1,19 @@
 import React from 'react'
-import { Skeleton } from '../ui/skeleton'
+import Image from 'next/image'
+import tmsLogo from '@/public/assets/logos/tms-logo.svg'
 
 const Loading = () => {
   return (
-    <div className="w-full h-full p-8">
-    <Skeleton className="w-full aspect-square rounded-xl md:aspect-[2.4/1]" />
-    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      <Skeleton className="aspect-square rounded-xl" />
-      <Skeleton className="aspect-square rounded-xl" />
-      <Skeleton className="aspect-square rounded-xl" />
-      <Skeleton className="aspect-square rounded-xl" />
-      <Skeleton className="aspect-square rounded-xl" />
-      <Skeleton className="aspect-square rounded-xl" />
+    <div className="w-full min-h-screen flex flex-col justify-center items-center p-8">
+      <Image 
+        src={tmsLogo}
+        alt="tms-logo"
+        width={200}
+        height={200}
+        className=" object-cover rounded-lg animate-bounce"
+      />
+      <h1 className='text-xl md:2xl sm:6xl mt-20 text-orange-600 text-center font-bold'>Loading...</h1>
     </div>
-  </div>
   )
 }
 

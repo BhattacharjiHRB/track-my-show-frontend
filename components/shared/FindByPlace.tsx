@@ -25,11 +25,11 @@ const FindByPlace = () => {
 
   }
 
-  console.log(showDistrict)
+ 
 
   return (
     <Select>
-    <SelectTrigger className="w-[200px]" onClick={showDistrict} >
+    <SelectTrigger className="w-[200px]" >
       <SelectValue placeholder="Find by District" />
     </SelectTrigger>
     <SelectContent>

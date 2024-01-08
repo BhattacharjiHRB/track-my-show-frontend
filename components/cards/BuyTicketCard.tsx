@@ -39,8 +39,8 @@ const BuyTicketCard = ({id, price}:props) => {
             </CardTitle>
         </CardHeader>
         <CardContent>
-            <Link href={''} >
-                <Button variant={'default'} size={'lg'} className='bg-orange-600 w-full'>
+            <Link href={'/under'} >
+                <Button variant={'default'} size={'lg'} onClick={buyTicket} className='bg-orange-600 w-full'>
                     Buy Ticket
                 </Button>
             </Link>

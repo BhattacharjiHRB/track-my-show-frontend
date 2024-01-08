@@ -8,14 +8,14 @@ import { Badge } from '../ui/badge'
 import { Separator } from '../ui/separator'
 import Link from 'next/link'
 
-interface props {
 
-    id: string; 
+interface props {
+    id: string;
     slug: string;
     imageUrl : string;
     eventName: string;
     organizer:{
-        slug: string;
+        id: string;
         name: string;
     };
     genres: string;
@@ -52,20 +52,20 @@ const EventCard = (
                 src={imageUrl} 
                 alt='Event Photo' 
                 width={300} 
-                height={250}
-                className='object-cover bg-neutral-700 max-w-[300px] max-h-[250px]' 
+                height={140}
+                className='object-cover bg-neutral-700 max-w-[300px] max-h-[140px]' 
             />
             <CardTitle className='text-white font-bold mt-8'>
                 {eventName}
             </CardTitle>
-            <CardDescription className='flex flex-1 gap-1'>
-                <Link href={`/organizer/${organizer.slug}`}>
+            <CardDescription className='flex flex-row'>
+                <Link href={`/organizer/${organizer.id}`} className='flex flex-1 gap-2'>
                     <Users2 className='h-5 w-5' /> 
                     <span className='text-sm text-orange-600 font-semibold'>{organizer.name}</span>
                 </Link>
             </CardDescription>
             <CardDescription>
-                <Badge variant={'outline'} className='text-gray-600 border-neutral-400'>
+                <Badge variant={'outline'} className='text-gray-600 border-neutral-400 mt-2' >
                     {genres}
                 </Badge>
             </CardDescription>
@@ -76,7 +76,7 @@ const EventCard = (
             <div className='text-neutral-300'> {showTime}PM , {date}  </div>
             <Separator className='my-2'/>
         </CardContent>
-        <CardFooter className='flex flex-1 items-center justify-between'>
+        <CardFooter className='flex flex-1 items-center justify-between mt-5'>
             <div className=' text-neutral-300 '>Starts@{price}</div>
             <Link href={`/eventprofile/${id}`}>
                 <Button variant={'secondary'} className='bg-orange-600 hover:bg-orange-700'>Buy Now</Button>

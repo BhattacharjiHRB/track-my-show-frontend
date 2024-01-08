@@ -4,15 +4,16 @@ import toast from "react-hot-toast"
 import Link from "next/link";
 import Image from "next/image";
 import { fetchApi, getTokenToLocalStorage } from "../api/axios"
-import EventCard from "@/components/cards/EventCard";
-import Loading from "@/components/shared/Loading";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import { useRouter } from "next/navigation";
+import EventCard from "@/components/cards/EventCard";
+import Loading from "@/components/shared/Loading";
 import FindByPlace from "@/components/shared/FindByPlace";
 import heroImage from "@/public/assets/images/hero-image-1.svg"
-import getEvent from "@/lib/DataFetch/getEvent";
-import { useRouter } from "next/navigation";
- 
+import emptyImage from "@/public/assets/images/empty-tmg.svg"
+
+
 interface eventProps{
 
     id:string;
@@ -20,7 +21,6 @@ interface eventProps{
     cover:string;
     name:string;
     organizer_id:string;
-    organizer_name:string;
     category_id:string;
     venue_id:string;
     scheduled_at:string;
@@ -60,9 +60,9 @@ function page() {
       if(response.status === 401){
         toast.error('Please Log In')
       }
-   
-    } catch (error:any) {   
-      console.log(`ERROR: ${error.message}`)
+      
+    } catch (error) {   
+      console.log(error)
       toast.error("Something Went Wrong")
     }finally{
       setLoading(false)
@@ -103,8 +103,8 @@ if(loading) return <Loading />
             className=" object-fill bg-neutral-800 rounded-xl shadow-xl shadow-orange-800"
           />
       </div>
-      <div className=" w-2/3 flex  items-center justify-between mt-5 ">
-        <div className=" flex  items-center justify-between gap-5">
+      <div className=" w-2/3 flex flex-1 max-md:flex-col items-center justify-between mt-5 ">
+        <div className=" flex flex-row max-md:flex-col items-center justify-between gap-5">
         <h1 className="text-3xl font-bold">Trending Shows</h1>
         <FindByPlace />
         </div>
@@ -125,23 +125,23 @@ if(loading) return <Loading />
         {event? event.map((ev) => (
           <EventCard 
             key={ev.id}
-            id={ev.id} 
-            slug={ev.slug} 
-            imageUrl={ev.cover} 
-            eventName={ev.name} 
+            id={ev.id}
+            slug={ev.slug}
+            imageUrl={ev.cover}
+            eventName={ev.name}
             organizer={{
-              slug: ev.organizer_id,
-              name: ev.organizer_name,
-            }} 
-            genres={ev.category_id} 
-            location={ev.venue_id} 
-            time={ev.scheduled_at} 
-            price={ev.ticket_price}     
+              id: ev.organizer_id,
+              name: ev.organizer_id,
+            }}
+            genres={ev.category_id}
+            location={ev.venue_id}
+            time={ev.scheduled_at}
+            price={ev.ticket_price}        
           />
         )):(
           <>
              <Image 
-              src={"/assets/images/empty-tmg.svg"} 
+              src={emptyImage} 
               alt={"no show"}
               width={175}
               height={50}
@@ -156,7 +156,7 @@ if(loading) return <Loading />
         ):(
           <div className="mt-5 flex flex-col items-center justify-center">
             <Image 
-              src={"/assets/images/empty-tmg.svg"} 
+              src={emptyImage} 
               alt={"no show"}
               width={175}
               height={50}
@@ -166,8 +166,8 @@ if(loading) return <Loading />
           </div>
       )}
 
-<div className="w-2/3 flex items-center justify-between mt-8  ">
-        <div className="flex items-center justify-between gap-5">
+<div className="w-2/3 flex flex-1 max-md:flex-col items-center justify-between mt-8  ">
+        <div className="flex flex-row max-md:flex-col items-center justify-between gap-5">
         <h1 className="text-3xl font-bold">Upcoming Shows</h1>
         <FindByPlace />
         </div>
@@ -185,15 +185,16 @@ if(loading) return <Loading />
       </div>
     {notLoggedIn ? (
         <div className="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 justify-evenly mt-14 gap-4">
-        {event? event.map((ev) => (
+        {event.length >= 0 ? event.map((ev) => (
           <EventCard 
-            id={ev.id} 
+            key={ev.id}
+            id={ev.id}
             slug={ev.slug} 
             imageUrl={ev.cover} 
             eventName={ev.name} 
             organizer={{
-              slug: ev.organizer_id,
-              name: ev.organizer_name,
+              id:ev.organizer_id,
+              name:ev.organizer_id,
             }} 
             genres={ev.category_id} 
             location={ev.venue_id} 
@@ -203,7 +204,7 @@ if(loading) return <Loading />
         )):(
           <>
              <Image 
-              src={"/assets/images/empty-tmg.svg"} 
+              src={emptyImage} 
               alt={"no show"}
               width={175}
               height={50}
@@ -219,7 +220,7 @@ if(loading) return <Loading />
           
           <div className="mt-5 flex flex-col items-center justify-center">
           <Image 
-            src={"/assets/images/empty-tmg.svg"} 
+            src={emptyImage} 
             alt={"no show"}
             width={175}
             height={50}

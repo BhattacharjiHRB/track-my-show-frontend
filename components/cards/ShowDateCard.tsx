@@ -2,6 +2,7 @@
 import React from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { Button } from '../ui/button'
+import { time } from 'console'
 
 interface ShowDateCardProps {
     schedule: string
@@ -19,20 +20,22 @@ const ShowDateCard = (
   const now = new Date()
   
   const [dateString, timeString] = schedule.split('T')
+    
+  const date = new Date(dateString)
 
   return (
     <Card className='w-[156px] h-[156px] border-none bg-[#1E1D1D] text-zinc-50'>
         <CardHeader>
             <CardTitle className='text-sm'>
-                {dateString}
+                {dateString.split('-').reverse().join('-')}
             </CardTitle>
             <CardDescription className='text-gray-400'>
-                {dateString}
+               
             </CardDescription>
         </CardHeader>
         <CardContent className=' overflow-hidden'>
                 <Button variant={'default'} size={'lg'} className='bg-orange-600 w-full' >
-                    {timeString}
+                    {timeString.split(':').slice(0,2).join(':')}
                 </Button>
         </CardContent>
     </Card>
