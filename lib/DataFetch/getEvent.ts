@@ -12,4 +12,3 @@ export default async function getEvent(){
     return data
 } 
 
-console.log(getEvent)

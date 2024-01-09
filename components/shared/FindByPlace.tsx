@@ -13,7 +13,7 @@ interface districtType{
 const FindByPlace = () => {
   const [district, setDistrict] = useState<districtType[]>([])
   
-  const showDistrict = async() =>{
+  const showDistricts = async() =>{
     try {
       const result = await fetchApi().get('district')
       const data = result.data.data
@@ -29,7 +29,7 @@ const FindByPlace = () => {
 
   return (
     <Select>
-    <SelectTrigger className="w-[200px]" >
+    <SelectTrigger className="w-[200px]" onClick={showDistricts} >
       <SelectValue placeholder="Find by District" />
     </SelectTrigger>
     <SelectContent>
@@ -45,4 +45,4 @@ const FindByPlace = () => {
   )
 }
 
-export default FindByPlace
+export default FindByPlace;

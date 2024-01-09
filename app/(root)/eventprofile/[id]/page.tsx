@@ -9,6 +9,7 @@ import ShowDateCard from '@/components/cards/ShowDateCard'
 import Loading from '@/components/shared/Loading'
 import PicCarousel from '@/components/shared/PicCarousel'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 interface eventProfileProps{
   name:string;
@@ -87,13 +88,15 @@ function page({params}:{params:{id:string}}) {
                 <h1 className='text-3xl font-semibold mb-5 '>Story</h1>
                 <p className='text-lg text-gray-500 text-justify'> {event.story} </p>
               </div>
-            </div><div className=' w-2/3 max-md:w-full items-center m-5'>
+            </div>
+            <div className=' w-full max-md:w-full items-center m-5'>
               <PicCarousel />
-            </div><div className=' w-2/3 flex flex-1 max-lg:flex-col items-center justify-between mt-10 gap-10'>
+            </div>
+            <div className=' w-2/3 flex flex-1 max-lg:flex-col items-center justify-between border-b border-neutral-600 mt-10 '>
               <div className='flex flex-col items-center justify-center'>
                 <h1 className='text-start text-3xl font-bold mb-2'>Venue</h1>
                 <p className='text-gray-500 text-xl max-md:text-sm'> {event.venue_id} </p>
-                <Button variant={'link'} className='text-orange-500 text-xl max-md:text-sm'>Get Direction</Button>
+                <Button variant={'link'} className='text-orange-500 text-lg max-md:text-sm'>Get Direction</Button>
               </div>
               <div className='flex flex-col items-center justify-center'>
                 <h1 className='text-start text-3xl font-bold mb-2'>Features</h1>
@@ -101,8 +104,25 @@ function page({params}:{params:{id:string}}) {
                   <li>{event.category_id}</li>
                 </ol>
               </div>
-
             </div>
+              <div className='flex flex-col items-center justify-between p-5'>
+                <h1 className='text-3xl font-bold text-start'>Organizer</h1>
+                <div className='flex flex-1 gap-3 mt-5'>
+                  <Image 
+                    src={event.organizer_id} 
+                    alt='Organizer Photo'
+                    width={30}
+                    height={30}
+                    className='rounded-full bg-neutral-800'
+                  />
+                  <p className='font-bold text-xl'> {event.organizer_id} </p>
+                </div>
+                  <Link href={`/organizer/${event.organizer_id}`}
+                    className='mt-4' 
+                  >
+                      <p className='text-lg text-orange-600 underline'>Visit Profile</p>
+                  </Link>
+              </div>
             </>
 
           ):(

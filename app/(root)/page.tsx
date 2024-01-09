@@ -12,6 +12,7 @@ import Loading from "@/components/shared/Loading";
 import FindByPlace from "@/components/shared/FindByPlace";
 import heroImage from "@/public/assets/images/hero-image-1.svg"
 import emptyImage from "@/public/assets/images/empty-tmg.svg"
+import AnimatedHero from "@/components/shared/AnimatedHero";
 
 
 interface eventProps{
@@ -38,7 +39,6 @@ function page() {
   const router = useRouter()
 
 
-
  
 
   const loadEvent =  async () => {
@@ -58,12 +58,12 @@ function page() {
       }
 
       if(response.status === 401){
-        toast.error('Please Log In')
+        toast.error('Please Log In first')
       }
       
     } catch (error) {   
       console.log(error)
-      toast.error("Something Went Wrong")
+      toast.error("Please Log In")
     }finally{
       setLoading(false)
     }
@@ -95,13 +95,7 @@ if(loading) return <Loading />
                   </span>
               </Button>
           </div>
-          <Image 
-            src={heroImage}
-            alt="Photo"
-            width={700}
-            height={500}
-            className=" object-fill bg-neutral-800 rounded-xl shadow-xl shadow-orange-800"
-          />
+         <AnimatedHero />
       </div>
       <div className=" w-2/3 flex flex-1 max-md:flex-col items-center justify-between mt-5 ">
         <div className=" flex flex-row max-md:flex-col items-center justify-between gap-5">
@@ -115,7 +109,7 @@ if(loading) return <Loading />
           className=" items-end outline-orange-600 text-orange-600">
             View All Shows
             <span>
-                    <ChevronRight className="h-5 w-5" /> 
+                <ChevronRight className="h-5 w-5" /> 
             </span>
           </Button>
           </Link>

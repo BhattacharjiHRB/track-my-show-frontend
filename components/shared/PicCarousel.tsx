@@ -47,7 +47,6 @@ const PicCarousel = () => {
     <div className='w-3/4 max-md:w-full m-auto'>
     <div className="mt-20">
     <Slider {...carouselControl}>
-        {/* <div className="bg-gray-700 w-20 h-20 md:w-36 md:h-36 sm:w-48 sm:h-48 rounded-xl text-center">TMS</div>
         <div className="bg-gray-700 w-20 h-20 md:w-36 md:h-36 sm:w-48 sm:h-48 rounded-xl text-center">TMS</div>
         <div className="bg-gray-700 w-20 h-20 md:w-36 md:h-36 sm:w-48 sm:h-48 rounded-xl text-center">TMS</div>
         <div className="bg-gray-700 w-20 h-20 md:w-36 md:h-36 sm:w-48 sm:h-48 rounded-xl text-center">TMS</div>
@@ -56,7 +55,8 @@ const PicCarousel = () => {
         <div className="bg-gray-700 w-20 h-20 md:w-36 md:h-36 sm:w-48 sm:h-48 rounded-xl text-center">TMS</div>
         <div className="bg-gray-700 w-20 h-20 md:w-36 md:h-36 sm:w-48 sm:h-48 rounded-xl text-center">TMS</div>
         <div className="bg-gray-700 w-20 h-20 md:w-36 md:h-36 sm:w-48 sm:h-48 rounded-xl text-center">TMS</div>
-        <div className="bg-gray-700 w-20 h-20 md:w-36 md:h-36 sm:w-48 sm:h-48 rounded-xl text-center">TMS</div> */}
+        <div className="bg-gray-700 w-20 h-20 md:w-36 md:h-36 sm:w-48 sm:h-48 rounded-xl text-center">TMS</div>
+        <div className="bg-gray-700 w-20 h-20 md:w-36 md:h-36 sm:w-48 sm:h-48 rounded-xl text-center">TMS</div>
     </Slider>
     </div>
 

@@ -1,32 +1,24 @@
-'use client'
+
 import { Facebook, Linkedin, Youtube } from 'lucide-react'
-import { useTheme } from 'next-themes'
 import Image from 'next/image'
 import React from 'react'
+import tmsLogo from '@/public/assets/logos/tms-logo.svg'
 
 const Footer = () => {
-    const {theme} = useTheme()
-    const isDark = theme === 'dark'
+
     
   return (
     <>
     <footer className='grid grid-flow-row grid-cols-4 items-center justify-evenly p-10 w-full border-b max-md:grid-cols-2 max-sm:grid-cols-1'>
         <div className='flex flex-col gap-5 items-start justify-start '>
-        {isDark ? (<Image 
-                            src={'/assets/logos/tms-logo.svg'} 
+                        <Image 
+                            src={tmsLogo} 
                             alt={'logo'} 
                             width={100} 
                             height={100} 
                             className='object-contain' 
                             priority={true}
-                        />):(  <Image 
-                            src={'/assets/logos/tms-logo-dark.svg'} 
-                            alt={'logo'} 
-                            width={100} 
-                            height={100} 
-                            className='object-contain' 
-                            priority={true}
-                        />)}
+                        />
                 <div>
                     <h6 className='text-sm text-gray-400'> Address: House-4, Block-L, Road-2/1 <br /> Banani, Dhaka-1213 <br />Email: trackmyshow2023@gmail.com <br /> Mobile: +880123456789</h6>
                 </div>

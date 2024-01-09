@@ -7,9 +7,10 @@ import { useRouter } from 'next/navigation'
 
 interface userProp{
     id: string
+    image: string;
 }
 
-const UserAvatarIcon = ({id}:userProp) => {
+const UserAvatarIcon = ({id, image}:userProp) => {
     
     const router = useRouter()
 
@@ -26,7 +27,7 @@ const UserAvatarIcon = ({id}:userProp) => {
     <DropdownMenu>
         <DropdownMenuTrigger asChild>
                 <Avatar>
-                    <AvatarImage src='' alt='userPic' />
+                    <AvatarImage src={image}  alt='userPic' />
                     <AvatarFallback className='text-black'>TMS</AvatarFallback>
                 </Avatar>         
         </DropdownMenuTrigger>

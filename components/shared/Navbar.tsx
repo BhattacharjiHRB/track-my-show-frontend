@@ -14,8 +14,7 @@ import { usePathname } from 'next/navigation'
 import TmsLogo from '@/public/assets/logos/tms-logo.svg'
 
 const Navbar = () => {
-    const {theme} = useTheme()
-    const isDark = theme === 'dark'
+
 
     const pathName = usePathname()
     const token = getTokenToLocalStorage()
@@ -53,7 +52,7 @@ const Navbar = () => {
 
                            {token ? (
                      
-                        <UserAvatarIcon id={''} />
+                        <UserAvatarIcon id={''} image={''} />
                     ) : (
                         <>
                                 <Link href={'/sign-up'}>
@@ -134,14 +133,6 @@ const Navbar = () => {
                             className='object-contain' 
                             priority={true}
                         /> 
-                        {/* <Image 
-                            src={'/assets/logos/tms-logo-dark.svg'} 
-                            alt={'logo'} 
-                            width={65} 
-                            height={65} 
-                            className='object-contain' 
-                            priority={true}
-                        /> */}
                       
 
                     </Link>
@@ -150,7 +141,7 @@ const Navbar = () => {
                     
                    <Searchbar />
                     
-                      <Link href={'/sign-up'}>
+                      <Link href={'/'}>
                         <Button
                             className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
                             variant={'ghost'}
@@ -160,7 +151,7 @@ const Navbar = () => {
                             </p>
                         </Button>
                     </Link>
-                    <Link href={'/sign-up'}>
+                    <Link href={'/'}>
                         <Button
                             className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
                             variant={'ghost'}
@@ -172,7 +163,7 @@ const Navbar = () => {
                     </Link>
                     {token ? (
                         <div className='ml-14'>
-                            <UserAvatarIcon id={''} />
+                            <UserAvatarIcon id={''} image={''} />
                         </div>
                     ) : (
                         <> 

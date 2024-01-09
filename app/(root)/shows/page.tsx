@@ -49,11 +49,11 @@ function page() {
 
     useEffect(()=>{
         fetchShow()
-    })
+    },[])
 
-    if(error){
-        router.push('/404')
-    }
+    // if(error){
+    //     router.push('/404')
+    // }
  
   return (
    <section className='flex flex-col min-h-screen items-center justify-center p-5'>
@@ -111,7 +111,7 @@ function page() {
                                 imageUrl={show.cover} 
                                 eventName={show.name} 
                                 organizer={{
-                                    slug:show.organizer_id,
+                                    id:show.organizer_id,
                                     name:show.organizer_name,
                                 }} 
                                 genres={show.category} 

@@ -57,7 +57,7 @@ function page ({params}:{params:{id:string}}) {
 
         useEffect(()=>{
          getOrganizer(params.id)
-          // getData()
+          getData()
         },[])
         
 

@@ -21,7 +21,7 @@ const ShowDateCard = (
   
   const [dateString, timeString] = schedule.split('T')
     
-  const date = new Date(dateString)
+
 
   return (
     <Card className='w-[156px] h-[156px] border-none bg-[#1E1D1D] text-zinc-50'>
@@ -30,7 +30,6 @@ const ShowDateCard = (
                 {dateString.split('-').reverse().join('-')}
             </CardTitle>
             <CardDescription className='text-gray-400'>
-               
             </CardDescription>
         </CardHeader>
         <CardContent className=' overflow-hidden'>
