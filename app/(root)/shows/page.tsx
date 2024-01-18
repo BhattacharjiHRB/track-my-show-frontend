@@ -9,6 +9,7 @@ import FindByPlace from '@/components/shared/FindByPlace'
 import EventCard from '@/components/cards/EventCard'
 import bigHeroImage from '@/public/assets/images/hero-big-image.svg'
 import { useRouter } from 'next/navigation'
+import Loading from '@/components/shared/Loading'
 
 
 interface showProps{
@@ -29,7 +30,7 @@ function page() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
 
-    const router = useRouter()
+
 
     const fetchShow = async() => {
 
@@ -51,9 +52,7 @@ function page() {
         fetchShow()
     },[])
 
-    // if(error){
-    //     router.push('/404')
-    // }
+    if(loading) return <Loading />
  
   return (
    <section className='flex flex-col min-h-screen items-center justify-center p-5'>

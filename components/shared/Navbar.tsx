@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
 import { MenuIcon } from 'lucide-react'
 import { navRoutes } from '@/lib/constants'
@@ -19,9 +19,28 @@ const Navbar = () => {
     const pathName = usePathname()
     const token = getTokenToLocalStorage()
 
+    const [head, setHead] = useState(false)
+
+    const stickyHeader = () => {
+        if(window.scrollY >= 20){
+            setHead(true)
+        }else{
+            setHead(false)
+        }
+    
+    }
+
+    useEffect(()=>{
+        window.addEventListener('scroll', stickyHeader)
+        return () => {
+            window.removeEventListener('scroll', stickyHeader)
+        }
+    
+    })
+
     
   return (
-    <header className=' sm:flex sm:items-center sm:justify-center border-b border-neutral-800 gap-14'>
+    <header className={ ` ${head ? "fixed w-full bg-neutral-900/90 ":"bg-transparent"} sm:flex sm:items-center sm:justify-center border-b border-neutral-800 gap-14`}>
         <div className='relative px-4 sm:px-6 lg:px-8 flex h-20 items-center justify-evenly w-full z-10'>
         {/* Mobile resposive navigation tabs */}
             <div className='flex w-10 items-center m-5 '>
@@ -55,7 +74,7 @@ const Navbar = () => {
                         <UserAvatarIcon id={''} image={''} />
                     ) : (
                         <>
-                                <Link href={'/sign-up'}>
+                                <Link href={'/faqs'}>
                                 <Button
                                     className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
                                     variant={'ghost'}
@@ -141,7 +160,7 @@ const Navbar = () => {
                     
                    <Searchbar />
                     
-                      <Link href={'/'}>
+                      <Link href={'/faqs'}>
                         <Button
                             className='text-sm hover:bg-orange-300/10 hover:text-orange-600'
                             variant={'ghost'}

@@ -5,6 +5,7 @@ import { fetchApi } from '@/app/api/axios';
 import ShowCard from '@/components/cards/EventByOrganizerCard';
 import OrganizerProfile from '@/components/cards/OrganizerProfile';
 import Loading from '@/components/shared/Loading';
+import { redirect } from 'next/navigation';
 
 interface organizerEventProp{
   id: string; 
@@ -64,7 +65,7 @@ function page ({params}:{params:{id:string}}) {
        
         
         if(loading) return <Loading />
-        if(error) return toast.error('Something Went Wrong')
+        if(error) redirect('/404')
       
 
       return (

@@ -9,7 +9,7 @@ export const signUpValidation = z.object({
 
 
 export const loginValidation = z.object({
-    phone: z.string().max(11,'Maximum 11 Digits').min(11,'Minimum 11 Digits'),
+    phone: z.string().min(11,'Minimum 11 Digits').max(11,'Maximum 11 Digits'),
     password: z.string().min(8, 'Minimum 8 characters').max(30, 'Maximum 20 characters')
 });
 
@@ -40,12 +40,13 @@ export const passwordReset = z.object({
     newPassword: z.string().min(8, 'Minimum 8 characters').max(30, 'Maximum 20 characters'),
     confirmPassword: z.string().min(8, 'Minimum 8 characters').max(30, 'Maximum 20 characters'),
 
-}).refine((data) => data.password != data.newPassword, {
+}).refine((data) => data.newPassword != data.confirmPassword, {
     message: "Passwords do not match",
 })
 
 // Organizer form data validation
 export const organizerValidation = z.object({
+    
     name: z.string().min(3,'Minimum 3 characters').max(30,'Maximum 30 characters'),
     slug: z.string().min(3,'Minimum 3 characters').max(30,'Maximum 30 characters'),
     description: z.string().min(3,'Minimum 3 characters').max(30,'Maximum 30 characters'),

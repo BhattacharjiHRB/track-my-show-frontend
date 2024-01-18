@@ -21,7 +21,7 @@ export const fetchApi = () =>{
     const storageToken = getTokenToLocalStorage();
 
     return axios.create({
-        baseURL: 'https://express-bf4s.onrender.com/api/v1/',
+        baseURL: 'https://track.holycareschool.com/api/v1/',
         headers: {
             
             'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ export const fetchApi = () =>{
 
 // Authentication API config
 export const authApi = axios.create({
-    baseURL: 'https://express-bf4s.onrender.com/api/v1/',
+    baseURL: 'https://track.holycareschool.com/api/v1/',
     headers:{
         'Content-Type': 'application/json',
         

@@ -37,7 +37,7 @@ const Footer = () => {
             <a href="" className='text-sm text-gray-400 hover:text-orange-600 hover:underline'>Terms & conditions</a>
             <a href="" className='text-sm text-gray-400 hover:text-orange-600 hover:underline'>Return Policy</a>
         </div>
-        <div className='flex items-center justify-between'>
+        <div className='flex flex-1 items-center justify-evenly'>
             <a href="https://www.facebook.com/">
                 <Facebook className='h-8 w-8 text-orange-600'/>
             </a>

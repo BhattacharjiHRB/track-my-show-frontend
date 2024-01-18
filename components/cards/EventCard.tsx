@@ -39,7 +39,7 @@ const EventCard = (
     }:props) => {
 
 
-
+        // const [eventDate, eventTime] = time.split('T');
 
   return (
 

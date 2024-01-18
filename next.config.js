@@ -6,7 +6,7 @@ const nextConfig = {
         remotePatterns:[
           {
             protocol: 'https',
-            hostname: 'express-bf4s.onrender.com',
+            hostname: 'track.holycareschool.com',
             pathname: '**'
           }
         ]

@@ -15,6 +15,7 @@ interface eventProfileProps{
   name:string;
   cover:string;
   slug:string;
+  description:string;
   about:string;
   organizer_id:string;
   story:string;
@@ -63,7 +64,7 @@ function page({params}:{params:{id:string}}) {
             <div className=' w-2/3 flex flex-1 max-lg:flex-col items-center justify-between mt-10 gap-10'>
               <div className='flex-col items-start justify-center mr-10'>
                 <h1 className='text-center text-3xl font-bold'>{event.name}</h1>
-                <p className='text-center text-gray-600'>An event by {event.organizer_id}</p>
+                <p className='text-center w-[300px] mt-3 text-gray-600'>{event.description} </p>
               </div>
               <div className='flex items-end'>
                 <BuyTicketCard
@@ -105,7 +106,7 @@ function page({params}:{params:{id:string}}) {
                 </ol>
               </div>
             </div>
-              <div className='flex flex-col items-center justify-between p-5'>
+              <div className='flex flex-col items-start w-2/3 justify-between p-5'>
                 <h1 className='text-3xl font-bold text-start'>Organizer</h1>
                 <div className='flex flex-1 gap-3 mt-5'>
                   <Image 

@@ -45,6 +45,7 @@ function page() {
     try {
       setLoading(true)
       const response = await fetchApi().get('event')
+
       console.log(response.data.data)
       setEvent(response.data.data)
 
@@ -53,6 +54,7 @@ function page() {
       
       }
       if(response.status === 500){
+        router.push('/404')
         toast.error("Please Check Your Internet")
       
       }
@@ -69,12 +71,12 @@ function page() {
     }
   }
 
-
-  
  
   useEffect(()=>{
     loadEvent();
   },[])
+
+
 
 
 if(loading) return <Loading />
@@ -95,7 +97,13 @@ if(loading) return <Loading />
                   </span>
               </Button>
           </div>
-         <AnimatedHero />
+          <Image 
+            src={heroImage}
+            alt="hero image"
+            width={500}
+            height={250}
+            className=" object-cover shadow-2xl shadow-orange-600 rounded-md"
+          />
       </div>
       <div className=" w-2/3 flex flex-1 max-md:flex-col items-center justify-between mt-5 ">
         <div className=" flex flex-row max-md:flex-col items-center justify-between gap-5">
